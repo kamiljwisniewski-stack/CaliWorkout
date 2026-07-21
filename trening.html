@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trening</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px}
+.header{background:#0f3460;padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.header h1{font-size:1.2em;color:#fff}
+.header p{font-size:0.8em;color:#90caf9;margin-top:2px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#0d1b2a;border-top:1px solid #1e3050;display:flex;z-index:200}
+.nav button{flex:1;padding:10px 4px 8px;border:none;background:transparent;color:#546e7a;font-size:0.6em;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:color 0.2s}
+.nav button .ico{font-size:1.5em}
+.nav button.active{color:#4fc3f7}
+.page{display:none;padding:16px}
+.page.active{display:block}
+.day-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.day-btn{padding:10px 4px;border:2px solid #1e3050;border-radius:10px;background:#0d1b2a;color:#78909c;font-size:0.68em;font-weight:bold;cursor:pointer;text-align:center;transition:all 0.2s}
+.day-btn.active{border-color:#4fc3f7;color:#4fc3f7;background:#0f2030}
+.prog-label{font-size:0.72em;color:#546e7a;display:flex;justify-content:space-between;margin-bottom:4px}
+.prog-bar{background:#0d1b2a;border-radius:6px;height:6px;margin-bottom:12px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,#1565c0,#4fc3f7);border-radius:6px;transition:width 0.3s;width:0%}
+.day-title{padding:14px;font-weight:bold;color:#fff;border-radius:10px 10px 0 0;font-size:0.9em;margin-top:4px}
+.mon{background:linear-gradient(90deg,#1565c0,#1a237e)}
+.wed{background:linear-gradient(90deg,#6a1b9a,#4a148c)}
+.thu{background:linear-gradient(90deg,#e65100,#bf360c)}
+.sat{background:linear-gradient(90deg,#1b5e20,#33691e)}
+.ss-card{background:#0d1b2a;border:1px solid #1e3050;border-radius:0 0 10px 10px;margin-bottom:12px;overflow:hidden}
+.ss-inner{border-top:1px solid #1e3050}
+.ss-title{background:#1e3a5f;padding:8px 12px;font-size:0.78em;color:#90caf9;font-weight:bold}
+.ex-block{padding:10px 12px;border-bottom:1px solid #1e2d40}
+.ex-block:last-child{border-bottom:none}
+.ex-top{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.ex-code{background:#1565c0;color:#fff;border-radius:4px;padding:2px 7px;font-size:0.74em;font-weight:bold;white-space:nowrap;margin-top:2px;flex-shrink:0}
+.ex-name{font-weight:600;color:#e3f2fd;font-size:0.86em;line-height:1.3}
+.ex-target{color:#ffd54f;font-size:0.75em;margin-top:2px}
+.ex-note{color:#78909c;font-size:0.72em;margin-top:2px;font-style:italic;line-height:1.4}
+.s-headers{display:grid;grid-template-columns:28px 1fr 1fr 32px;gap:5px;margin-bottom:4px}
+.s-headers span{font-size:0.63em;color:#546e7a;text-align:center;text-transform:uppercase;letter-spacing:0.3px}
+.s-row{display:grid;grid-template-columns:28px 1fr 1fr 32px;gap:5px;align-items:center;margin-bottom:5px}
+.s-label{font-size:0.7em;color:#546e7a;font-weight:bold;text-align:center}
+.s-input{background:#131e2e;border:1px solid #2a3a5c;border-radius:6px;padding:7px 4px;color:#e0e0e0;font-size:0.8em;width:100%;text-align:center;outline:none;transition:border-color 0.2s}
+.s-input:focus{border-color:#4fc3f7}
+.s-input::placeholder{color:#37474f}
+.s-chk{width:26px;height:26px;border-radius:6px;border:2px solid #2a3a5c;background:#131e2e;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85em;transition:all 0.2s;user-select:none}
+.s-chk.done{background:#1b5e20;border-color:#4caf50;color:#fff}
+.tabata{background:linear-gradient(135deg,#880e4f,#4a0030);border-radius:10px;padding:12px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:flex-start}
+.tabata .ti{font-size:1.8em;flex-shrink:0}
+.tabata strong{color:#f48fb1;font-size:0.84em;display:block;margin-bottom:3px}
+.tabata p{color:#e0c0cc;font-size:0.76em;line-height:1.4}
+.rest{background:#102030;border-left:3px solid #ffd54f;border-radius:4px;padding:7px 10px;margin:8px 0 12px;font-size:0.76em;color:#ffe082}
+.w-block{background:#0f3460;border-left:4px solid #4fc3f7;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.w-block h3{color:#4fc3f7;font-size:0.84em;margin-bottom:7px}
+.w-item{padding:5px 0 5px 16px;position:relative;font-size:0.78em;line-height:1.5;color:#cfd8dc;border-bottom:1px solid #1a3550}
+.w-item:last-child{border-bottom:none}
+.w-item::before{content:'▸';position:absolute;left:0;color:#4fc3f7}
+.w-item strong{color:#fff}
+.ortho{background:#1a0f00;border:1px solid #ff6f00;border-left:5px solid #ff6f00;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.ortho-tag{background:#e65100;color:#fff;border-radius:4px;padding:2px 7px;font-size:0.71em;font-weight:bold;display:inline-block;margin-bottom:5px}
+.ortho p{font-size:0.78em;color:#e0e0e0;line-height:1.6}
+.ortho strong{color:#ffa726}
+.sec-label{font-size:0.7em;color:#546e7a;text-transform:uppercase;letter-spacing:1px;margin:14px 0 7px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.stat-box{background:#0d1b2a;border:1px solid #1e3050;border-radius:10px;padding:12px;text-align:center}
+.stat-box .sn{font-size:1.9em;font-weight:bold;color:#4fc3f7}
+.stat-box .sl{font-size:0.7em;color:#546e7a;margin-top:2px}
+.exp-box{background:#0d1b2a;border:1px solid #1e3050;border-radius:10px;padding:14px;margin-bottom:12px}
+.exp-box h3{color:#4fc3f7;font-size:0.88em;margin-bottom:10px}
+.ebtn{width:100%;padding:13px;border:none;border-radius:10px;font-size:0.86em;font-weight:bold;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity 0.2s}
+.ebtn:active{opacity:0.8}
+.ebtn.csv{background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff}
+.ebtn.jsn{background:linear-gradient(135deg,#0d47a1,#1565c0);color:#fff}
+.ebtn.red{background:linear-gradient(135deg,#b71c1c,#c62828);color:#fff}
+.hist-empty{text-align:center;padding:50px 20px;color:#546e7a}
+.hist-empty .ei{font-size:2.5em;margin-bottom:10px}
+.hist-card{background:#0d1b2a;border:1px solid #1e3050;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.hist-head{background:#1e3a5f;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.hist-head .hd{color:#90caf9;font-size:0.8em;font-weight:bold}
+.hist-head .hl{color:#ffd54f;font-size:0.76em}
+.hist-ex{padding:7px 12px;border-bottom:1px solid #131e2e;font-size:0.77em}
+.hist-ex:last-child{border-bottom:none}
+.hist-ex .hen{color:#e3f2fd;font-weight:600;margin-bottom:3px}
+.chips{display:flex;gap:4px;flex-wrap:wrap}
+.chip{background:#1e3a5f;border-radius:4px;padding:2px 7px;font-size:0.71em;color:#90caf9}
+.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(12px);background:#1b5e20;color:#fff;padding:8px 18px;border-radius:20px;font-size:0.8em;opacity:0;transition:all 0.3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🧗 Kalistenika &amp; Skałki</h1>
+  <p id="hDate"></p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="page active" id="page-workout">
+  <div class="day-grid">
+    <button class="day-btn active" id="dbtn-mon" onclick="switchDay('mon',this)">📅 Pon</button>
+    <button class="day-btn" id="dbtn-wed" onclick="switchDay('wed',this)">📅 Śro</button>
+    <button class="day-btn" id="dbtn-thu" onclick="switchDay('thu',this)">📅 Czw</button>
+    <button class="day-btn" id="dbtn-sat" onclick="switchDay('sat',this)">📅 Sob</button>
+  </div>
+  <div class="prog-label"><span>Postęp treningu</span><span id="progTxt">0 / 0 serii</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+  <div id="wContent"></div>
+</div>
+
+<div class="page" id="page-warmup">
+  <p class="sec-label">🟩 10-minutowa rozgrzewka</p>
+  <div class="w-block">
+    <h3>🔵 Blok 1: Podniesienie tętna (3 min)</h3>
+    <div class="w-item"><strong>Marsz w miejscu z krążeniami ramion (1 min)</strong> – Dynamiczny marsz bez podskoków + krążenia rąk (30s w przód, 30s w tył).</div>
+    <div class="w-item"><strong>Wiatraki w opadzie tułowia (1 min)</strong> – Szeroki rozkrok, opad tułowia, proste plecy. Rotujesz klatkę dotykając dłonią przeciwległej stopy.</div>
+    <div class="w-item"><strong>Krążenia bioder (1 min)</strong> – Obszerne krążenia miednicy (30s w każdą stronę).</div>
+  </div>
+  <div class="w-block">
+    <h3>🔵 Blok 2: Mobilność bioder (3 min)</h3>
+    <div class="w-item"><strong>Pozycja Żaby – Frog Stretch (1 min)</strong> – Szeroki klęk podparty, stopy na zewnątrz. 10 pulsowań biodrami, 20s statycznie. Zatrzymaj przed bólem kolana.</div>
+    <div class="w-item"><strong>Krążenia bioder w klęku (1 min)</strong> – Klęk podparty, unosisz ugiętą nogę w bok, powolne krążenia udem (30s na nogę).</div>
+    <div class="w-item"><strong>World's Greatest Stretch (1 min)</strong> – Głęboki wykrok, noga z tyłu prosta. Dłonie wewnątrz stopy. Unosisz rękę do sufitu (5 rotacji na stronę).</div>
+  </div>
+  <div class="w-block">
+    <h3>🔵 Blok 3: Ochrona przedramion (4 min)</h3>
+    <div class="w-item"><strong>Rozciąganie przedramion (1 min)</strong> – Ręka prosta, palce w dół (15s), potem w górę (15s). Zmiana ręki.</div>
+    <div class="w-item"><strong>Rotacja nadgarstków w podporze (1 min)</strong> – Klęk podparty. Kołysanie przód-tył (10×), na boki (10×), palce w stronę kolan (10×).</div>
+    <div class="w-item"><strong>Pompowanie dłoni (1 min)</strong> – Szybkie zaciskanie w pięści i prostowanie palców przez 45–60s, aż do pieczenia.</div>
+    <div class="w-item"><strong>Aktywacja łopatek w zwisie (1 min)</strong> – Zwis na drążku chwytem neutralnym. Samym ruchem łopatek ściągasz ciało w górę (10–12 powt.).</div>
+  </div>
+  <p class="sec-label">🦺 Ortopedia</p>
+  <div class="ortho"><div class="ortho-tag">⚠️ ZASADA 90°</div><p>W czwartek i sobotę <strong>nie schodź biodrami poniżej linii kolan</strong>. Łąkotka nie toleruje głębokiej kompresji pod obciążeniem.</p></div>
+  <div class="ortho"><div class="ortho-tag">⚠️ SŁUCHAJ PRZEDRAMION</div><p>Muscle-upy i nachwyt tylko gdy <strong>ból nie występuje</strong>. Jeśli ręka kłuje – wracasz do chwytu neutralnego.</p></div>
+</div>
+
+<div class="page" id="page-history">
+  <p class="sec-label">📋 Historia treningów</p>
+  <div id="histContent"></div>
+</div>
+
+<div class="page" id="page-export">
+  <p class="sec-label">📊 Statystyki</p>
+  <div class="stats-grid">
+    <div class="stat-box"><div class="sn" id="sSess">0</div><div class="sl">Sesji</div></div>
+    <div class="stat-box"><div class="sn" id="sSeries">0</div><div class="sl">Serii</div></div>
+    <div class="stat-box"><div class="sn" id="sEx">0</div><div class="sl">Ćwiczeń</div></div>
+    <div class="stat-box"><div class="sn" id="sDays">0</div><div class="sl">Dni</div></div>
+  </div>
+  <p class="sec-label">📤 Eksport</p>
+  <div class="exp-box">
+    <h3>💾 Pobierz dane</h3>
+    <button class="ebtn csv" onclick="exportCSV()">📊 Eksportuj CSV (Excel)</button>
+    <button class="ebtn jsn" onclick="exportJSON()">📋 Eksportuj JSON</button>
+  </div>
+  <div class="exp-box">
+    <h3>🗑️ Zarządzanie</h3>
+    <button class="ebtn red" onclick="clearToday()">🔄 Wyczyść dzisiejszy trening</button>
+    <button class="ebtn red" onclick="clearAll()">⚠️ Wyczyść CAŁĄ historię</button>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="active" id="nav-workout" onclick="switchPage('workout',this)"><span class="ico">💪</span>Trening</button>
+  <button id="nav-warmup" onclick="switchPage('warmup',this)"><span class="ico">🔥</span>Rozgrzewka</button>
+  <button id="nav-history" onclick="switchPage('history',this)"><span class="ico">📋</span>Historia</button>
+  <button id="nav-export" onclick="switchPage('export',this)"><span class="ico">📤</span>Eksport</button>
+</div>
+
+<script>
+var DAYS = {
+  mon:{
+    label:'Poniedziałek', sub:'Pchanie + Palce + Fizjo', color:'mon',
+    ss:[
+      {title:'SUPER SERIA A — Klatka / Triceps', ex:[
+        {id:'mon_a1', code:'A1', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:''},
+        {id:'mon_a2', code:'A2', name:'Pompki diamentowe', target:'3 × 10 powt.', note:''}
+      ]},
+      {title:'SUPER SERIA B — Klatka / Poręcze / Brzuch', ex:[
+        {id:'mon_b1', code:'B1', name:'Dipy na poręczach', target:'3 × 10–12 powt.', note:''},
+        {id:'mon_b2', code:'B2', name:'Krzesełko na poręczach (przyciąganie kolan)', target:'3 × 12–15 powt.', note:''}
+      ]},
+      {title:'SUPER SERIA C — Palce + Fizjo 1', ex:[
+        {id:'mon_c1', code:'C1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:'Dłonie na opuszkach, można na podwyższeniu.'},
+        {id:'mon_c2', code:'C2', name:'Kettlebell Pullover (Fizjo)', target:'3 × 12 powt.', note:'Leżenie na plecach, przenoszenie kettla za głowę i powrót.'}
+      ]}
+    ],
+    tabata:'Hollow Body Hold – spięcie brzucha, lędźwie wciśnięte w ziemię, ręce wzdłuż ciała.'
+  },
+  wed:{
+    label:'Środa', sub:'Plecy (Lina + Drążek TEST) + Nogi', color:'wed',
+    ss:[
+      {title:'SUPER SERIA A — Test siły dynamicznej (Ostrożnie!)', ex:[
+        {id:'wed_a1', code:'A1', name:'Muscle-Up (Wejście siłowe)', target:'3 × 2–3 powt.', note:'⚠️ Odpuść natychmiast przy ostrym bólu przedramienia lub łokcia!'},
+        {id:'wed_a2', code:'A2', name:'Rumuński Martwy Ciąg z kettlem', target:'3 × 12 powt.', note:'Kolana lekko odblokowane – bezpieczne dla łąkotki.'}
+      ]},
+      {title:'SUPER SERIA B — Test nachwytu + Lina', ex:[
+        {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'Ścisła kontrola ruchu, bez szarpania na dole.'},
+        {id:'wed_b2', code:'B2', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta.'}
+      ]},
+      {title:'SUPER SERIA C — Uzupełnienie pleców + Izometria', ex:[
+        {id:'wed_c1', code:'C1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6 powt.', note:''},
+        {id:'wed_c2', code:'C2', name:'Zwis na ręcznikach (chwyt neutralny)', target:'3 × 10–15 sek.', note:'Jeśli przedramię pali – oprzyj lekko palce stóp o ziemię.'}
+      ]}
+    ],
+    tabata:'Wall Sit – krzesełko przy ścianie, uda pod kątem 90°, dłonie luźno.'
+  },
+  thu:{
+    label:'Czwartek', sub:'Barki + Klatka + Stabilizacja Łąkotki + Fizjo', color:'thu',
+    ss:[
+      {title:'SUPER SERIA A — Klatka / Poręcze + Plecy', ex:[
+        {id:'thu_a1', code:'A1', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 10–12 powt.', note:''},
+        {id:'thu_a2', code:'A2', name:'Wiosłowanie kettlem w opadzie (chwyt młotkowy)', target:'3 × 10–12 powt./rękę', note:''}
+      ]},
+      {title:'SUPER SERIA B — Barki + Bezpieczne nogi', ex:[
+        {id:'thu_b1', code:'B1', name:'Pompki Pike (z ziemi, dłonie płasko)', target:'3 × 8–10 powt.', note:''},
+        {id:'thu_b2', code:'B2', name:'Przysiady pudełkowe / Box Squats', target:'3 × 12 powt.', note:'⚠️ Kąt w kolanie dokładnie 90°, nigdy głębiej!'}
+      ]},
+      {title:'SUPER SERIA C — Palce + Fizjo 2', ex:[
+        {id:'thu_c1', code:'C1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:''},
+        {id:'thu_c2', code:'C2', name:'Kettlebell Windmill (Wiatrak)', target:'3 × 5 powt./stronę', note:'Mocna stabilizacja barku, rozciągnięcie taśmy bocznej.'}
+      ]}
+    ],
+    tabata:'Plank – klasyczna deska na przedramionach. Mocno zassany brzuch, dłonie wolne.'
+  },
+  sat:{
+    label:'Sobota', sub:'Plecy + Ramiona + Nogi (Uda obonóż + Swing)', color:'sat',
+    ss:[
+      {title:'SUPER SERIA A — Plecy + Bezpieczne uda obonóż', ex:[
+        {id:'sat_a1', code:'A1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6–8 powt.', note:''},
+        {id:'sat_a2', code:'A2', name:'Półprzysiady z kettlem (Goblet do 90°)', target:'3 × 12 powt.', note:'⚠️ Zatrzymujesz gdy udo równolegle do ziemi – nigdy głębiej!'}
+      ]},
+      {title:'SUPER SERIA B — Antagonistyczna pompa ramion', ex:[
+        {id:'sat_b1', code:'B1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Pełna kontrola i powolne tempo opuszczania ciężaru.'},
+        {id:'sat_b2', code:'B2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:''}
+      ]},
+      {title:'SUPER SERIA C — Test nachwytu nr 2 + Dynamika bioder', ex:[
+        {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:''},
+        {id:'sat_c2', code:'C2', name:'Kettlebell Swing', target:'3 × 15 powt.', note:'Ruch opiera się na zgięciu w biodrach – bezpieczne dla łąkotki.'}
+      ]}
+    ],
+    tabata:'Glute Bridge Hold – mostek biodrowy statycznie, biodra maksymalnie wysoko, mocne spięcie pośladków.'
+  }
+};
+
+var DB = {};
+var curDay = 'mon';
+
+function todayStr() {
+  var d = new Date();
+  var mm = String(d.getMonth()+1).padStart(2,'0');
+  var dd = String(d.getDate()).padStart(2,'0');
+  return d.getFullYear()+'-'+mm+'-'+dd;
+}
+
+function load() {
+  try { DB = JSON.parse(localStorage.getItem('trening_v3') || '{}'); }
+  catch(e) { DB = {}; }
+}
+
+function save() {
+  localStorage.setItem('trening_v3', JSON.stringify(DB));
+}
+
+function makeKey(dayId, exId, s) {
+  return todayStr() + '__' + dayId + '__' + exId + '__s' + s;
+}
+
+function safeId(k) {
+  return k.replace(/__/g,'_').replace(/-/g,'_');
+}
+
+function renderDay(dayId) {
+  var day = DAYS[dayId];
+  if (!day) return;
+  var h = '';
+
+  h += '<div class="day-title ' + day.color + '">📅 ' + day.label + ' — ' + day.sub + '</div>';
+  h += '<div class="rest">⏸️ Odpoczynek po każdej superserii: 60–90 sekund</div>';
+
+  for (var i = 0; i < day.ss.length; i++) {
+    var ss = day.ss[i];
+    h += '<div class="ss-card">';
+    h += '<div class="ss-title">' + ss.title + '</div>';
+
+    for (var j = 0; j < ss.ex.length; j++) {
+      var ex = ss.ex[j];
+      h += '<div class="ex-block">';
+      h += '<div class="ex-top">';
+      h += '<div class="ex-code">' + ex.code + '</div>';
+      h += '<div style="flex:1">';
+      h += '<div class="ex-name">' + ex.name + '</div>';
+      h += '<div class="ex-target">' + ex.target + '</div>';
+      if (ex.note) h += '<div class="ex-note">' + ex.note + '</div>';
+      h += '</div></div>';
+
+      h += '<div class="s-headers"><span>Seria</span><span>Powt.</span><span>Ciężar</span><span>✓</span></div>';
+
+      for (var s = 1; s <= 3; s++) {
+        var k = makeKey(dayId, ex.id, s);
+        var sid = safeId(k);
+        var v = DB[k] || {};
+        var rval = v.r || '';
+        var wval = v.w || '';
+        var isdone = v.c ? true : false;
+
+        h += '<div class="s-row">';
+        h += '<div class="s-label">S' + s + '</div>';
+        h += '<input class="s-input" type="text" inputmode="numeric" placeholder="powt." value="' + rval + '" onchange="sf(\'' + k + '\',\'r\',this.value)">';
+        h += '<input class="s-input" type="text" inputmode="decimal" placeholder="kg/bw" value="' + wval + '" onchange="sf(\'' + k + '\',\'w\',this.value)">';
+        h += '<div class="s-chk' + (isdone ? ' done' : '') + '" id="chk_' + sid + '" onclick="tc(\'' + k + '\',\'' + sid + '\')">' + (isdone ? '✓' : '') + '</div>';
+        h += '</div>';
+      }
+      h += '</div>';
+    }
+    h += '</div>';
+  }
+
+  h += '<div class="tabata"><div class="ti">⏱️</div><div>';
+  h += '<strong>TABATA — 4 min (8 rund × 20s pracy / 10s luzu)</strong>';
+  h += '<p>' + day.tabata + '</p>';
+  h += '</div></div>';
+
+  document.getElementById('wContent').innerHTML = h;
+  updateProg(dayId);
+}
+
+function sf(k, field, val) {
+  if (!DB[k]) DB[k] = {};
+  DB[k][field] = val;
+  save();
+  updateProg(curDay);
+}
+
+function tc(k, sid) {
+  if (!DB[k]) DB[k] = {};
+  DB[k].c = !DB[k].c;
+  save();
+  var el = document.getElementById('chk_' + sid);
+  if (el) {
+    if (DB[k].c) {
+      el.classList.add('done');
+      el.textContent = '✓';
+      showToast('✅ Seria zaliczona!');
+    } else {
+      el.classList.remove('done');
+      el.textContent = '';
+    }
+  }
+  updateProg(curDay);
+}
+
+function updateProg(dayId) {
+  var day = DAYS[dayId];
+  if (!day) return;
+  var total = 0, done = 0;
+  for (var i = 0; i < day.ss.length; i++) {
+    for (var j = 0; j < day.ss[i].ex.length; j++) {
+      for (var s = 1; s <= 3; s++) {
+        total++;
+        var k = makeKey(dayId, day.ss[i].ex[j].id, s);
+        if (DB[k] && DB[k].c) done++;
+      }
+    }
+  }
+  var pct = total > 0 ? Math.round(done/total*100) : 0;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progTxt').textContent = done + ' / ' + total + ' serii';
+}
+
+function switchDay(dayId, btn) {
+  curDay = dayId;
+  var btns = document.querySelectorAll('.day-btn');
+  for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
+  btn.classList.add('active');
+  renderDay(dayId);
+}
+
+function switchPage(pageId, btn) {
+  var pages = document.querySelectorAll('.page');
+  for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active');
+  var navBtns = document.querySelectorAll('.nav button');
+  for (var i = 0; i < navBtns.length; i++) navBtns[i].classList.remove('active');
+  document.getElementById('page-' + pageId).classList.add('active');
+  btn.classList.add('active');
+  if (pageId === 'history') renderHistory();
+  if (pageId === 'export') renderStats();
+}
+
+function renderHistory() {
+  var container = document.getElementById('histContent');
+  var grouped = {};
+
+  Object.keys(DB).forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    var date = parts[0];
+    var dayId = parts[1];
+    var exId = parts[2];
+    var serie = parts[3];
+    var v = DB[k];
+    if (!v || (!v.r && !v.w && !v.c)) return;
+    if (!grouped[date]) grouped[date] = {};
+    if (!grouped[date][dayId]) grouped[date][dayId] = {};
+    if (!grouped[date][dayId][exId]) grouped[date][dayId][exId] = [];
+    grouped[date][dayId][exId].push({s: serie, r: v.r||'', w: v.w||'', c: v.c||false});
+  });
+
+  var dates = Object.keys(grouped).sort().reverse();
+
+  if (dates.length === 0) {
+    container.innerHTML = '<div class="hist-empty"><div class="ei">📭</div><p>Brak zapisanych treningów.<br>Zacznij ćwiczyć i wpisuj wyniki!</p></div>';
+    return;
+  }
+
+  var h = '';
+  dates.forEach(function(date) {
+    Object.keys(grouped[date]).forEach(function(dayId) {
+      var dayInfo = DAYS[dayId];
+      var label = dayInfo ? dayInfo.label : dayId;
+      h += '<div class="hist-card">';
+      h += '<div class="hist-head"><span class="hd">📅 ' + formatDate(date) + '</span><span class="hl">' + label + '</span></div>';
+      Object.keys(grouped[date][dayId]).forEach(function(exId) {
+        var exName = findExName(dayId, exId);
+        var series = grouped[date][dayId][exId];
+        h += '<div class="hist-ex"><div class="hen">' + exName + '</div><div class="chips">';
+        series.forEach(function(s) {
+          if (s.r || s.w) {
+            var txt = [s.r ? s.r+' powt.' : '', s.w ? s.w+' kg' : ''].filter(Boolean).join(' / ');
+            if (s.c) txt += ' ✓';
+            h += '<span class="chip">' + txt + '</span>';
+          }
+        });
+        h += '</div></div>';
+      });
+      h += '</div>';
+    });
+  });
+  container.innerHTML = h;
+}
+
+function findExName(dayId, exId) {
+  var day = DAYS[dayId];
+  if (!day) return exId;
+  for (var i = 0; i < day.ss.length; i++) {
+    for (var j = 0; j < day.ss[i].ex.length; j++) {
+      if (day.ss[i].ex[j].id === exId) return day.ss[i].ex[j].name;
+    }
+  }
+  return exId;
+}
+
+function formatDate(ds) {
+  var d = new Date(ds);
+  return d.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+
+function renderStats() {
+  var allKeys = Object.keys(DB);
+  var dates = new Set();
+  var sessions = new Set();
+  var totalSeries = 0;
+  var totalEx = new Set();
+
+  allKeys.forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    var v = DB[k];
+    if (!v || (!v.r && !v.w && !v.c)) return;
+    dates.add(parts[0]);
+    sessions.add(parts[0]+'__'+parts[1]);
+    totalSeries++;
+    totalEx.add(parts[0]+'__'+parts[1]+'__'+parts[2]);
+  });
+
+  document.getElementById('sSess').textContent = sessions.size;
+  document.getElementById('sSeries').textContent = totalSeries;
+  document.getElementById('sEx').textContent = totalEx.size;
+  document.getElementById('sDays').textContent = dates.size;
+}
+
+function exportCSV() {
+  var csv = 'Data,Dzien,Cwiczenie,Seria,Powtorzenia,Ciezar (kg),Zaliczona\n';
+  Object.keys(DB).forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    var v = DB[k];
+    if (!v) return;
+    var dayLabel = DAYS[parts[1]] ? DAYS[parts[1]].label : parts[1];
+    var exName = findExName(parts[1], parts[2]);
+    var serie = parts[3].replace('s','');
+    csv += '"'+parts[0]+'","'+dayLabel+'","'+exName+'","'+serie+'","'+(v.r||'')+'","'+(v.w||'')+'","'+(v.c?'Tak':'Nie')+'"\n';
+  });
+  downloadFile('trening_wyniki.csv', csv, 'text/csv;charset=utf-8;');
+  showToast('📊 CSV pobrane!');
+}
+
+function exportJSON() {
+  var out = {exportDate: new Date().toISOString(), data: DB};
+  downloadFile('trening_wyniki.json', JSON.stringify(out, null, 2), 'application/json');
+  showToast('📋 JSON pobrane!');
+}
+
+function downloadFile(name, content, type) {
+  var blob = new Blob([content], {type: type});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function clearToday() {
+  if (!confirm('Wyczyścić dzisiejszy trening?')) return;
+  var today = todayStr();
+  Object.keys(DB).forEach(function(k) {
+    if (k.indexOf(today) === 0) delete DB[k];
+  });
+  save();
+  renderDay(curDay);
+  showToast('🔄 Dzisiejszy trening wyczyszczony!');
+}
+
+function clearAll() {
+  if (!confirm('Usunąć CAŁĄ historię treningów? Nie można cofnąć!')) return;
+  DB = {};
+  save();
+  renderDay(curDay);
+  showToast('🗑️ Historia wyczyszczona!');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 2200);
+}
+
+function init() {
+  load();
+  var now = new Date();
+  document.getElementById('hDate').textContent = now.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  renderDay('mon');
+}
+
+init();
+</script>
+</body>
+</html>
