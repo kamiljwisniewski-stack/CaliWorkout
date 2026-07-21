@@ -1,2 +1,0 @@
-# CaliWorkout
-My training app.
