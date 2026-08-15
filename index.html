@@ -83,9 +83,54 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
 .hist-ex:last-child{border-bottom:none}
 .hist-ex .hen{color:#e3f2fd;font-weight:600;margin-bottom:3px}
 .chips{display:flex;gap:4px;flex-wrap:wrap}
-.chip{background:#1e3a5f;border-radius:4px;padding:2px 7px;font-size:0.71em;color:#90caf9}
+.chip{background:#1e3a5f;border:none;border-radius:4px;padding:2px 7px;font-size:0.71em;color:#90caf9;cursor:pointer;font-family:inherit}
 .toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(12px);background:#1b5e20;color:#fff;padding:8px 18px;border-radius:20px;font-size:0.8em;opacity:0;transition:all 0.3s;z-index:999;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.prog-badge{background:linear-gradient(135deg,#f57f17,#e65100);border-radius:6px;padding:6px 9px;margin-top:6px;font-size:0.73em;color:#fff8e1;display:flex;gap:6px;align-items:flex-start;line-height:1.4}
+.prog-badge .pb-ico{flex-shrink:0}
+.prog-badge strong{color:#fff}
+.bonus-title{background:#4e342e;color:#ffcc80}
+.prog-summary-card{background:#0d1b2a;border:1px solid #1e3050;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.prog-summary-card .ps-day{color:#4fc3f7;font-size:0.72em;font-weight:bold;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.prog-summary-item{font-size:0.78em;color:#ffe0b2;padding:4px 0;border-bottom:1px solid #131e2e}
+.prog-summary-item:last-child{border-bottom:none}
+.prog-empty{text-align:center;padding:30px 20px;color:#546e7a;font-size:0.85em}
+.chart-toggle-btn{background:#132840;border:1px solid #1e3a5f;color:#90caf9;font-size:0.7em;padding:5px 9px;border-radius:6px;cursor:pointer;margin-top:0}
+.ex-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.edit-field{margin-bottom:10px;text-align:left}
+.edit-field label{display:block;font-size:0.72em;color:#78909c;margin-bottom:4px}
+.edit-check{display:flex;align-items:center;gap:8px;font-size:0.8em;color:#e0e0e0;margin-bottom:14px;text-align:left}
+.chart-toggle-btn:active{background:#1e3a5f}
+.chart-container{margin-top:8px;background:#0a1420;border-radius:8px;padding:8px}
+.chart-empty{font-size:0.72em;color:#546e7a;text-align:center;padding:10px}
+.chart-caption{font-size:0.68em;color:#78909c;text-align:center;margin-top:4px}
+.stepper{display:flex;align-items:center;gap:2px}
+.step-btn{width:20px;height:28px;flex-shrink:0;background:#1565c0;border:none;border-radius:5px;color:#fff;font-size:0.95em;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;user-select:none}
+.step-btn:active{background:#0d47a1}
+.step-input{flex:1;min-width:0;padding:7px 2px}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.modal-box{background:#0f2030;border:1px solid #2a3a5c;border-radius:12px;padding:18px;max-width:320px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+.modal-box p{color:#e0e0e0;font-size:0.88em;line-height:1.5;margin-bottom:14px}
+.modal-input{width:100%;background:#131e2e;border:1px solid #2a3a5c;border-radius:8px;padding:9px;color:#e0e0e0;font-size:0.9em;margin-bottom:14px;outline:none;text-align:center}
+.modal-input:focus{border-color:#4fc3f7}
+.modal-actions{display:flex;gap:8px}
+.modal-btn{flex:1;padding:10px;border:none;border-radius:8px;font-size:0.85em;font-weight:bold;cursor:pointer}
+.modal-btn.cancel{background:#1e3050;color:#90caf9}
+.modal-btn.confirm{background:linear-gradient(135deg,#c62828,#b71c1c);color:#fff}
+.modal-btn.confirm.ok{background:linear-gradient(135deg,#1565c0,#0d47a1)}
+.timer-fab{position:fixed;bottom:78px;right:16px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0d47a1,#1565c0);display:flex;align-items:center;justify-content:center;font-size:1.4em;box-shadow:0 4px 14px rgba(0,0,0,0.4);z-index:150;cursor:pointer;border:none;color:#fff}
+.timer-fab:active{opacity:0.8}
+.timer-box{text-align:center}
+.timer-display{font-size:3em;font-weight:bold;color:#4fc3f7;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.timer-display.work{color:#ff7043}
+.timer-display.rest{color:#4fc3f7}
+.timer-sub{font-size:0.85em;color:#90caf9;margin-bottom:14px;min-height:18px}
+.timer-picker{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.timer-controls{display:flex;gap:8px;margin-bottom:10px}
+.backup-banner{background:linear-gradient(135deg,#4a148c,#6a1b9a);padding:10px 14px;font-size:0.78em;color:#f3e5f5;display:flex;flex-direction:column;gap:8px}
+.backup-banner-actions{display:flex;gap:8px}
+.bb-btn{flex:1;padding:8px;border:none;border-radius:6px;font-size:0.78em;font-weight:bold;cursor:pointer;background:#2a0845;color:#fff}
+.bb-btn.primary{background:linear-gradient(135deg,#1565c0,#0d47a1)}
 </style>
 </head>
 <body>
@@ -94,6 +139,8 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
   <h1>🧗 Kalistenika &amp; Skałki</h1>
   <p id="hDate"></p>
 </div>
+
+<div id="backupBanner"></div>
 
 <div class="toast" id="toast"></div>
 
@@ -148,6 +195,19 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
     <div class="stat-box"><div class="sn" id="sEx">0</div><div class="sl">Ćwiczeń</div></div>
     <div class="stat-box"><div class="sn" id="sDays">0</div><div class="sl">Dni</div></div>
   </div>
+  <p class="sec-label">🚀 Sugestie progresji</p>
+  <div id="progSummaryContent"></div>
+
+  <p class="sec-label">📊 Objętość tygodniowa</p>
+  <div id="weeklyVolContent"></div>
+
+  <p class="sec-label">📥 Import</p>
+  <div class="exp-box">
+    <h3>📥 Wczytaj wyniki z pliku CSV</h3>
+    <input type="file" id="importFile" accept=".csv" style="display:none" onchange="handleImportFile(this)">
+    <button class="ebtn jsn" onclick="document.getElementById('importFile').click()">📥 Importuj CSV</button>
+  </div>
+
   <p class="sec-label">📤 Eksport</p>
   <div class="exp-box">
     <h3>💾 Pobierz dane</h3>
@@ -157,6 +217,7 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
   <div class="exp-box">
     <h3>🗑️ Zarządzanie</h3>
     <button class="ebtn red" onclick="clearToday()">🔄 Wyczyść dzisiejszy trening</button>
+    <button class="ebtn red" onclick="resetProgOverrides()">🎯 Zresetuj zatwierdzone cele progresji</button>
     <button class="ebtn red" onclick="clearAll()">⚠️ Wyczyść CAŁĄ historię</button>
   </div>
 </div>
@@ -168,76 +229,94 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
   <button id="nav-export" onclick="switchPage('export',this)"><span class="ico">📤</span>Eksport</button>
 </div>
 
+<button class="timer-fab" onclick="openTimerModal()" aria-label="Timer">⏱️</button>
+
 <script>
 var DAYS = {
   mon:{
-    label:'Poniedziałek', sub:'Pchanie + Palce + Fizjo', color:'mon',
+    label:'Poniedziałek', sub:'Pchanie + Siła Jednorącz + Ab Roller', color:'mon',
     ss:[
       {title:'SUPER SERIA A — Klatka / Triceps', ex:[
-        {id:'mon_a1', code:'A1', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:''},
-        {id:'mon_a2', code:'A2', name:'Pompki diamentowe', target:'3 × 10 powt.', note:''}
+        {id:'mon_a1', code:'A1', name:'Pompki diamentowe', target:'3 × 10 powt.', note:'', pMax:10, next:'Deficit diamond push-ups – dłonie na podwyższeniu ok. 5 cm.', bw:true},
+        {id:'mon_a2', code:'A2', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:'', pMax:15, next:'Dodaj tempo 3s w dół albo obciążenie (plecak/kamizelka).', bw:true}
       ]},
       {title:'SUPER SERIA B — Klatka / Poręcze / Brzuch', ex:[
-        {id:'mon_b1', code:'B1', name:'Dipy na poręczach', target:'3 × 10–12 powt.', note:''},
-        {id:'mon_b2', code:'B2', name:'Krzesełko na poręczach (przyciąganie kolan)', target:'3 × 12–15 powt.', note:''}
+        {id:'mon_b1', code:'B1', name:'Dipy na poręczach (cc)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem (pas/plecak).', bw:true},
+        {id:'mon_b2', code:'B2', name:'Krzesełko na poręczach (dynamiczne przyciąganie kolan)', target:'3 × 12–15 powt.', note:'', pMax:15, next:'Przyciąganie kolan wyżej (do klatki) lub wolniejsze tempo.', bw:true}
       ]},
-      {title:'SUPER SERIA C — Palce + Fizjo 1', ex:[
-        {id:'mon_c1', code:'C1', name:'Pompki jednorącz', target:'3 × 3-5 powt./ręka', note:'Genialna siła pod skały. Jeśli na ziemi za ciężko, zrób z dłońmi na podwyższeniu, np. na ławce – im wyżej ręka, tym łatwiej.'},
-        {id:'mon_c2', code:'C2', name:'Kettlebell Halo', target:'3 × 8/10 powt.', note:'Trzymaj kettlebell za rogi klamry dnem do góry. Mobilność i rehabilitacja barków oraz łopatek.'}
+      {title:'SUPER SERIA C — Moc jednorącz + Fizjo', ex:[
+        {id:'mon_c1', code:'C1', name:'Pompki jednorącz (lub regresja na podwyższeniu)', target:'3 × 3-5 powt./stronę', note:'Genialna siła pod skały. Jeśli na ziemi za ciężko, zrób z dłońmi na podwyższeniu, np. na ławce – im wyżej ręka, tym łatwiej.', pMax:5, next:'Niższe podwyższenie – zbliżaj się do pełnej wersji z ziemi.', bw:true},
+        {id:'mon_c2', code:'C2', name:'Kettlebell Pullover', target:'3 × 12 powt.', note:'Zalecenie fizjo. Leżenie na plecach, powolne przenoszenie kettla prostymi rękami za głowę na ziemię i powrót.', pMax:12, next:'Cięższy kettlebell.'}
+      ]},
+      {title:'SUPER SERIA D — Tylny bark + Core', ex:[
+        {id:'mon_d1', code:'D1', name:'Kettlebell Bent-Over Reverse Fly (rozpiętki tylnego barku z kettlami)', target:'3 × 12–15 powt.', note:'Trzymasz kettle za rogi klamry, opad tułowia jak przy wiosłowaniu, unosisz ramiona na boki (nie do tyłu). Zamiennik pod balans barków – wspinacze mają przerośnięty przód barku, a zaniedbany tył. Kiedyś możesz też spróbować wersji z gumą (Face Pull), jeśli będzie wygodniej.', pMax:15, next:'Cięższy kettlebell lub dodaj chwilę przytrzymania na górze ruchu.'},
+        {id:'mon_d2', code:'D2', name:'Ab Roller (kółko na brzuch)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Dłuższy rollout (bliżej pełnego wyprostu) lub rollout stojąc.', bw:true}
       ]}
     ],
     tabata:'Hollow Body Hold – spięcie brzucha, lędźwie wciśnięte w ziemię, ręce wzdłuż ciała.'
   },
   wed:{
-    label:'Środa', sub:'Plecy (Lina + Drążek TEST) + Nogi', color:'wed',
+    label:'Środa', sub:'Plecy (Lina + Drążek TEST) + Wycieraczki w zwisie + Nogi (Tył)', color:'wed',
     ss:[
-      {title:'SUPER SERIA A — Test siły dynamicznej (Ostrożnie!)', ex:[
-        {id:'wed_a1', code:'A1', name:'Muscle-Up (Wejście siłowe)', target:'3 × 2–3 powt.', note:'⚠️ Odpuść natychmiast przy ostrym bólu przedramienia lub łokcia!'},
-        {id:'wed_a2', code:'A2', name:'Rumuński Martwy Ciąg z kettlem', target:'3 × 12 powt.', note:'Kolana lekko odblokowane – bezpieczne dla łąkotki.'}
+      {title:'SUPER SERIA A — Najwyższa dynamika i świeżość', ex:[
+        {id:'wed_a1', code:'A1', name:'Muscle-Up (Wejście siłowe)', target:'3 × 2–3 powt.', note:'⚠️ Odpuść natychmiast przy ostrym bólu przedramienia lub łokcia!', pMax:3, next:'Więcej kontroli w fazie przejścia / spróbuj strict bez kipu.', bw:true},
+        {id:'wed_a2', code:'A2', name:'Rumuński Martwy Ciąg z kettlem', target:'3 × 12 powt.', note:'Kolana lekko odblokowane – bezpieczne dla łąkotki.', pMax:12, next:'Cięższy kettlebell.'}
       ]},
-      {title:'SUPER SERIA B — Test nachwytu + Lina', ex:[
-        {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'Ścisła kontrola ruchu, bez szarpania na dole.'},
-        {id:'wed_b2', code:'B2', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta.'}
+      {title:'SUPER SERIA B — Mocny chwyt pod rotację brzucha', ex:[
+        {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'Ścisła kontrola ruchu, bez szarpania na dole.', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+        {id:'wed_b2', code:'B2', name:'Wycieraczki w zwisie na drążku (Hanging Windshields)', target:'3 × 8–10 powt.', note:'Rób je, póki masz siłę utrzymać się na drążku.', pMax:10, next:'Pełniejszy zakres ruchu (bliżej drążka) lub więcej powtórzeń.', bw:true}
       ]},
-      {title:'SUPER SERIA C — Uzupełnienie pleców + Izometria', ex:[
-        {id:'wed_c1', code:'C1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6 powt.', note:''},
-        {id:'wed_c2', code:'C2', name:'Zwis na ręcznikach (chwyt neutralny)', target:'3 × 10–15 sek.', note:'Jeśli przedramię pali – oprzyj lekko palce stóp o ziemię.'}
+      {title:'SUPER SERIA C — Moc chwytu neutralnego', ex:[
+        {id:'wed_c1', code:'C1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6 powt.', note:'', pMax:6, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+        {id:'wed_c2', code:'C2', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta.', pSkip:true, next:'Mniej pomocy nóg lub szybszy czas wejścia.', bw:true}
+      ]},
+      {title:'SUPER SERIA D — Archer + Izometryczne wykończenie dłoni', ex:[
+        {id:'wed_d1', code:'D1', name:'Pompki Archera (Archer Push-ups)', target:'3 × 6–8 powt./stronę', note:'', pMax:8, next:'Głębszy archer, bliżej pełnej wersji jednorącz.', bw:true},
+        {id:'wed_d2', code:'D2', name:'Zwis na ręcznikach (chwyt neutralny)', target:'3 × 10–15 sek.', note:'Czysta izometria na sam koniec, gdy palce mogą już tylko bez ruchu wisieć. Jeśli przedramię pali – oprzyj lekko palce stóp o ziemię.', pMax:15, next:'Dłuższy czas zwisu lub cieńszy ręcznik.', bw:true}
       ]}
     ],
     tabata:'Wall Sit – krzesełko przy ścianie, uda pod kątem 90°, dłonie luźno.'
   },
   thu:{
-    label:'Czwartek', sub:'Barki + Klatka + Stabilizacja Łąkotki + Fizjo', color:'thu',
+    label:'Czwartek', sub:'Barki + Klatka + Palce + Wykroki + Rozpiętki', color:'thu',
     ss:[
-      {title:'SUPER SERIA A — Klatka / Poręcze + Plecy', ex:[
-        {id:'thu_a1', code:'A1', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 10–12 powt.', note:''},
-        {id:'thu_a2', code:'A2', name:'Wiosłowanie kettlem w opadzie (chwyt młotkowy)', target:'3 × 10–12 powt./rękę', note:''}
+      {title:'SUPER SERIA A — Palce (na świeżo!)', ex:[
+        {id:'thu_a1', code:'A1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:'Przesunięte na początek treningu, żebyś robił je na świeżych, nieprzemęczonych palcach – to najbardziej ryzykowne ćwiczenie w tygodniu dla ścięgien.', pMax:8, next:'Więcej powtórzeń – zwiększaj bardzo ostrożnie, to wrażliwe ścięgna.', bw:true},
+        {id:'thu_a2', code:'A2', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem.', bw:true}
       ]},
-      {title:'SUPER SERIA B — Barki + Bezpieczne nogi', ex:[
-        {id:'thu_b1', code:'B1', name:'Pompki Pike (z ziemi, dłonie płasko)', target:'3 × 8–10 powt.', note:''},
-        {id:'thu_b2', code:'B2', name:'Wykroki w tył', target:'3 × 10 powt./noga', note:'Bez ciężaru, powolne tempo. Przednia noga schodzi maksymalnie do kąta 90 stopni – to zdejmuje nacisk z łąkotki.'}
+      {title:'SUPER SERIA B — Plecy poziomo + Zdrowie łokcia', ex:[
+        {id:'thu_b1', code:'B1', name:'Wiosłowanie kettlem w opadzie tułowia (chwyt młotkowy)', target:'3 × 10–12 powt./rękę', note:'', pMax:12, next:'Cięższy kettlebell.'},
+        {id:'thu_b2', code:'B2', name:'Reverse Wrist Curls (uginanie nadgarstka w tył)', target:'3 × 15 powt.', note:'Mała hantla/kettlebell, lekki ciężar. Profilaktyka łokcia tenisisty/golfisty – częsta kontuzja przy dużej objętości pchania + wspinaczce. Zastąpiło Pompki Pike, które pokrywały się ruchowo z Decline Push-ups z soboty.', pMax:15, next:'Dodaj niewielkie obciążenie.'}
       ]},
-      {title:'SUPER SERIA C — Palce + Fizjo 2', ex:[
-        {id:'thu_c1', code:'C1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:''},
-        {id:'thu_c2', code:'C2', name:'Kettlebell Pullover', target:'3 × 12 powt.', note:'Leżenie na plecach, powolne przenoszenie kettla prostymi rękami za głowę na ziemię i powrót.'}
+      {title:'SUPER SERIA C — Ortopedyczna siła jednonóż + Rozpiętki', ex:[
+        {id:'thu_c1', code:'C1', name:'Wykroki w tył (Zakroki)', target:'3 × 10 powt./nogę', note:'Bez ciężaru, powolne tempo. Przednia noga schodzi maksymalnie do kąta 90 stopni – to zdejmuje nacisk z łąkotki.', pMax:10, next:'Dodaj lekkie obciążenie (kettle w rękach), zachowując kąt 90°.', bw:true},
+        {id:'thu_c2', code:'C2', name:'Rozpiętki', target:'3 × 12 powt.', note:'', pMax:12, next:'Cięższy kettlebell lub wolniejsze tempo ekscentryczne.'}
+      ]},
+      {title:'SUPER SERIA D — Eksplozywność + Brzuch rotacja', ex:[
+        {id:'thu_d1', code:'D1', name:'Pompki dynamiczne / z klaskaniem (Plyo Push-ups)', target:'3 × 6–8 powt.', note:'', pMax:8, next:'Wyższe klaśnięcie lub plyo z dłońmi na podwyższeniu.', bw:true},
+        {id:'thu_d2', code:'D2', name:'Scyzoryki naprzemienne na ziemi (Bicycle Crunches)', target:'3 × 20 powt.', note:'', pMax:20, next:'Wolniejsze tempo z przytrzymaniem w skręcie.', bw:true}
       ]}
     ],
     tabata:'Plank – klasyczna deska na przedramionach. Mocno zassany brzuch, dłonie wolne.'
   },
   sat:{
-    label:'Sobota', sub:'Plecy + Ramiona + Nogi (Uda obonóż + Swing)', color:'sat',
+    label:'Sobota', sub:'Plecy + Ramiona + Nogi + Brzuch w wiszeniu', color:'sat',
     ss:[
-      {title:'SUPER SERIA A — Plecy + Bezpieczne uda obonóż', ex:[
-        {id:'sat_a1', code:'A1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6–8 powt.', note:''},
-        {id:'sat_a2', code:'A2', name:'Półprzysiady z kettlem (Goblet do 90°)', target:'3 × 12 powt.', note:'⚠️ Zatrzymujesz gdy udo równolegle do ziemi – nigdy głębiej!'}
+      {title:'SUPER SERIA A — Plecy + Bezpieczna dynamika bioder', ex:[
+        {id:'sat_a1', code:'A1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6–8 powt.', note:'', pMax:8, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+        {id:'sat_a2', code:'A2', name:'Kettlebell Swing', target:'3 × 15 powt.', note:'Ruch opiera się na zgięciu w biodrach – bezpieczne dla łąkotki. Rób na początku superserii, gdy jesteś w pełni skoncentrowany.', pMax:15, next:'Cięższy kettlebell.'}
       ]},
       {title:'SUPER SERIA B — Antagonistyczna pompa ramion', ex:[
-        {id:'sat_b1', code:'B1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Pełna kontrola i powolne tempo opuszczania ciężaru.'},
-        {id:'sat_b2', code:'B2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:''}
+        {id:'sat_b1', code:'B1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Pełna kontrola i powolne tempo opuszczania ciężaru.', pMax:12, next:'Cięższy kettlebell.'},
+        {id:'sat_b2', code:'B2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Cięższy kettlebell.'}
       ]},
-      {title:'SUPER SERIA C — Test nachwytu nr 2 + Dynamika bioder', ex:[
-        {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:''},
-        {id:'sat_c2', code:'C2', name:'Kettlebell Swing', target:'3 × 15 powt.', note:'Ruch opiera się na zgięciu w biodrach – bezpieczne dla łąkotki.'}
+      {title:'SUPER SERIA C — Test nachwytu + Przysiad siłowy', ex:[
+        {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+        {id:'sat_c2', code:'C2', name:'Półprzysiady z kettlem (Goblet do 90°)', target:'3 × 12 powt.', note:'⚠️ Zatrzymujesz ruch, gdy udo jest równolegle do ziemi – nigdy głębiej!', pMax:12, next:'Cięższy kettlebell (głębokość zostaje bez zmian – 90°).'}
+      ]},
+      {title:'SUPER SERIA D — Góra klatki + Brzuch siła', ex:[
+        {id:'sat_d1', code:'D1', name:'Pompki z nogami na podwyższeniu (Decline Push-ups)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Wyższe podwyższenie nóg.', bw:true},
+        {id:'sat_d2', code:'D2', name:'Unoszenie nóg/kolan do L-Sita (w zwisie lub na poręczach)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Prostsze nogi (bliżej pełnego L-sita) lub dłuższe przytrzymanie na górze.', bw:true}
       ]}
     ],
     tabata:'Glute Bridge Hold – mostek biodrowy statycznie, biodra maksymalnie wysoko, mocne spięcie pośladków.'
@@ -245,6 +324,8 @@ var DAYS = {
 };
 
 var DB = {};
+var PROG = {}; // trwałe nadpisania celów po zatwierdzeniu progresji: {dayId__exId: {pMax, target}}
+var TIMER = {interval: null, mode: null, remaining: 0, tabataRound: 0, tabataPhase: 'work', phaseLabel: '', audioCtx: null};
 var curDay = 'mon';
 
 function todayStr() {
@@ -255,12 +336,43 @@ function todayStr() {
 }
 
 function load() {
-  try { DB = JSON.parse(localStorage.getItem('trening_v3') || '{}'); }
+  try { DB = JSON.parse(localStorage.getItem('trening_v4') || '{}'); }
   catch(e) { DB = {}; }
 }
 
 function save() {
-  localStorage.setItem('trening_v3', JSON.stringify(DB));
+  localStorage.setItem('trening_v4', JSON.stringify(DB));
+}
+
+function loadProg() {
+  try { PROG = JSON.parse(localStorage.getItem('trening_v4_prog') || '{}'); }
+  catch(e) { PROG = {}; }
+}
+
+function saveProg() {
+  localStorage.setItem('trening_v4_prog', JSON.stringify(PROG));
+}
+
+// Zwraca ćwiczenie z ewentualnie nadpisanymi polami (target/pMax/name/note/bw...) po edycji lub zatwierdzonej progresji.
+function getEffectiveEx(dayId, ex) {
+  var override = PROG[dayId + '__' + ex.id];
+  if (!override) return ex;
+  var merged = {};
+  for (var k in ex) merged[k] = ex[k];
+  for (var k2 in override) merged[k2] = override[k2];
+  return merged;
+}
+
+function bumpTargetString(target, oldMax, newMax) {
+  var matches = target.match(/\d+/g) || [];
+  var lastIdx = -1;
+  matches.forEach(function(m, i) { if (parseInt(m, 10) === oldMax) lastIdx = i; });
+  if (lastIdx === -1) return target;
+  var counter = -1;
+  return target.replace(/\d+/g, function(m) {
+    counter++;
+    return counter === lastIdx ? String(newMax) : m;
+  });
 }
 
 function makeKey(dayId, exId, s) {
@@ -285,7 +397,7 @@ function renderDay(dayId) {
     h += '<div class="ss-title">' + ss.title + '</div>';
 
     for (var j = 0; j < ss.ex.length; j++) {
-      var ex = ss.ex[j];
+      var ex = getEffectiveEx(dayId, ss.ex[j]);
       h += '<div class="ex-block">';
       h += '<div class="ex-top">';
       h += '<div class="ex-code">' + ex.code + '</div>';
@@ -293,6 +405,17 @@ function renderDay(dayId) {
       h += '<div class="ex-name">' + ex.name + '</div>';
       h += '<div class="ex-target">' + ex.target + '</div>';
       if (ex.note) h += '<div class="ex-note">' + ex.note + '</div>';
+      if (isReadyForProgression(dayId, ex)) {
+        h += '<div class="prog-badge"><span class="pb-ico">🚀</span><span><strong>Gotowy na progresję!</strong> Górny zakres powtórzeń zaliczony w 2 ostatnich sesjach. Sugestia: ' + ex.next + '</span></div>';
+        if (ex.bw) {
+          h += '<button type="button" class="chart-toggle-btn" onclick="acceptProgression(\'' + dayId + '\',\'' + ex.id + '\',' + ex.pMax + ')">✅ Zatwierdź nowy cel powtórzeń</button>';
+        }
+      }
+      h += '<div class="ex-actions">';
+      h += '<button type="button" class="chart-toggle-btn" onclick="toggleChart(\'' + dayId + '\',\'' + ex.id + '\',this)">📈 Wykres</button>';
+      h += '<button type="button" class="chart-toggle-btn" onclick="editExercise(\'' + dayId + '\',\'' + ex.id + '\')">✏️ Edytuj</button>';
+      h += '</div>';
+      h += '<div class="chart-container" id="chart_' + ex.id + '" style="display:none"></div>';
       h += '</div></div>';
 
       h += '<div class="s-headers"><span>Seria</span><span>Powt.</span><span>Ciężar</span><span>✓</span></div>';
@@ -302,13 +425,21 @@ function renderDay(dayId) {
         var sid = safeId(k);
         var v = DB[k] || {};
         var rval = v.r || '';
-        var wval = v.w || '';
+        var wval = (v.w !== undefined && v.w !== null) ? v.w : (ex.bw ? '0' : '');
         var isdone = v.c ? true : false;
 
         h += '<div class="s-row">';
         h += '<div class="s-label">S' + s + '</div>';
-        h += '<input class="s-input" type="text" inputmode="numeric" placeholder="powt." value="' + rval + '" onchange="sf(\'' + k + '\',\'r\',this.value)">';
-        h += '<input class="s-input" type="text" inputmode="decimal" placeholder="kg/bw" value="' + wval + '" onchange="sf(\'' + k + '\',\'w\',this.value)">';
+        h += '<div class="stepper">';
+        h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'r\',-1,\'' + sid + '\')">−</button>';
+        h += '<input class="s-input step-input" type="text" inputmode="numeric" placeholder="powt." value="' + rval + '" id="in_r_' + sid + '" onchange="sf(\'' + k + '\',\'r\',this.value)">';
+        h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'r\',1,\'' + sid + '\')">+</button>';
+        h += '</div>';
+        h += '<div class="stepper">';
+        h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'w\',-2.5,\'' + sid + '\')">−</button>';
+        h += '<input class="s-input step-input" type="text" inputmode="decimal" placeholder="kg/bw" value="' + wval + '" id="in_w_' + sid + '" onchange="sf(\'' + k + '\',\'w\',this.value)">';
+        h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'w\',2.5,\'' + sid + '\')">+</button>';
+        h += '</div>';
         h += '<div class="s-chk' + (isdone ? ' done' : '') + '" id="chk_' + sid + '" onclick="tc(\'' + k + '\',\'' + sid + '\')">' + (isdone ? '✓' : '') + '</div>';
         h += '</div>';
       }
@@ -330,6 +461,21 @@ function sf(k, field, val) {
   if (!DB[k]) DB[k] = {};
   DB[k][field] = val;
   save();
+  updateProg(curDay);
+}
+
+function stepVal(k, field, delta, sid) {
+  if (!DB[k]) DB[k] = {};
+  var cur = DB[k][field];
+  var num = parseFloat(String(cur === undefined || cur === null || cur === '' ? '0' : cur).replace(',', '.'));
+  if (isNaN(num)) num = 0;
+  num = Math.round((num + delta) * 100) / 100;
+  if (num < 0) num = 0;
+  var val = String(num);
+  DB[k][field] = val;
+  save();
+  var inputEl = document.getElementById('in_' + field + '_' + sid);
+  if (inputEl) inputEl.value = val;
   updateProg(curDay);
 }
 
@@ -369,6 +515,220 @@ function updateProg(dayId) {
   document.getElementById('progTxt').textContent = done + ' / ' + total + ' serii';
 }
 
+// ---- PROGRESJA ----
+// Zasada: jeśli we wszystkich seriach danego ćwiczenia osiągnięto górny zakres
+// powtórzeń (pMax) w 2 ostatnich zalogowanych sesjach tego ćwiczenia (niekoniecznie
+// pod rząd kalendarzowo, ale to dwie ostatnie sesje w których w ogóle je wykonano),
+// uznajemy że czas na trudniejszy wariant / dodatkowe obciążenie.
+var NUM_SETS = 3;
+
+function getExerciseSessions(dayId, exId) {
+  var byDate = {};
+  Object.keys(DB).forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    if (parts[1] !== dayId || parts[2] !== exId) return;
+    var date = parts[0];
+    var s = parseInt(parts[3].replace('s', ''), 10);
+    var v = DB[k];
+    if (!v || (!v.r && !v.w && !v.c)) return;
+    if (!byDate[date]) byDate[date] = {};
+    byDate[date][s] = v;
+  });
+  var dates = Object.keys(byDate).sort();
+  return dates.map(function(date) {
+    var vals = [];
+    for (var s = 1; s <= NUM_SETS; s++) {
+      vals.push(byDate[date][s] ? byDate[date][s].r : null);
+    }
+    return {date: date, vals: vals};
+  });
+}
+
+function isSessionTopped(session, pMax) {
+  for (var i = 0; i < session.vals.length; i++) {
+    var v = session.vals[i];
+    if (v === null || v === '' || v === undefined) return false;
+    var num = parseFloat(String(v).replace(',', '.'));
+    if (isNaN(num) || num < pMax) return false;
+  }
+  return true;
+}
+
+function acceptProgression(dayId, exId, oldMax) {
+  var rawEx = findExObj(dayId, exId);
+  if (!rawEx) return;
+  var effEx = getEffectiveEx(dayId, rawEx);
+  var suggested = oldMax + (oldMax < 6 ? 1 : 2);
+  showPromptModal('Nowy górny cel powtórzeń dla "' + rawEx.name + '" (obecnie ' + oldMax + '):', suggested, function(input) {
+    var newMax = parseFloat(String(input).replace(',', '.'));
+    if (isNaN(newMax) || newMax <= 0) { showToast('⚠️ Nieprawidłowa wartość'); return; }
+    var newTarget = bumpTargetString(effEx.target, oldMax, newMax);
+    PROG[dayId + '__' + exId] = {pMax: newMax, target: newTarget};
+    saveProg();
+    renderDay(curDay);
+    showToast('🎯 Nowy cel: ' + newTarget);
+  });
+}
+
+function isReadyForProgression(dayId, ex) {
+  if (ex.pSkip || !ex.pMax) return false;
+  var sessions = getExerciseSessions(dayId, ex.id);
+  if (sessions.length < 2) return false;
+  var last2 = sessions.slice(-2);
+  return last2.every(function(s) { return isSessionTopped(s, ex.pMax); });
+}
+
+function getAllProgressionReady() {
+  var out = [];
+  Object.keys(DAYS).forEach(function(dayId) {
+    var day = DAYS[dayId];
+    day.ss.forEach(function(ss) {
+      ss.ex.forEach(function(rawEx) {
+        var ex = getEffectiveEx(dayId, rawEx);
+        if (isReadyForProgression(dayId, ex)) {
+          out.push({dayLabel: day.label, ex: ex});
+        }
+      });
+    });
+  });
+  return out;
+}
+
+function renderProgressionSummary() {
+  var container = document.getElementById('progSummaryContent');
+  if (!container) return;
+  var ready = getAllProgressionReady();
+  if (ready.length === 0) {
+    container.innerHTML = '<div class="prog-empty">💤 Na razie brak ćwiczeń gotowych do progresji.<br>Pojawią się tu, gdy zaliczysz górny zakres powtórzeń we wszystkich seriach przez 2 ostatnie sesje danego ćwiczenia.</div>';
+    return;
+  }
+  var byDay = {};
+  ready.forEach(function(r) {
+    if (!byDay[r.dayLabel]) byDay[r.dayLabel] = [];
+    byDay[r.dayLabel].push(r.ex);
+  });
+  var h = '';
+  Object.keys(byDay).forEach(function(dayLabel) {
+    h += '<div class="prog-summary-card"><div class="ps-day">📅 ' + dayLabel + '</div>';
+    byDay[dayLabel].forEach(function(ex) {
+      h += '<div class="prog-summary-item">🚀 <strong>' + ex.name + '</strong> — ' + ex.next + '</div>';
+    });
+    h += '</div>';
+  });
+  container.innerHTML = h;
+}
+
+// ---- IMPORT CSV ----
+// Mapa: 'DzienLabel||Nazwa cwiczenia z pliku' -> [aktualny dayId, aktualny exId]
+// Cwiczenia usunięte z planu (Kettlebell Halo, Pompki Pike) celowo pominięte – zostaną zignorowane przy imporcie.
+// Kettlebell Pullover było logowane w czwartek, ale w aktualnym planie żyje w poniedziałek (mon_c2) – mapujemy pod nowe miejsce.
+var IMPORT_ALIASES = {
+  'Poniedziałek||Pompki klasyczne (głębokie, pełny wyprost)': ['mon','mon_a2'],
+  'Poniedziałek||Pompki diamentowe': ['mon','mon_a1'],
+  'Poniedziałek||Dipy na poręczach': ['mon','mon_b1'],
+  'Poniedziałek||Krzesełko na poręczach (przyciąganie kolan)': ['mon','mon_b2'],
+  'Poniedziałek||Pompki jednorącz': ['mon','mon_c1'],
+  'Środa||Muscle-Up (Wejście siłowe)': ['wed','wed_a1'],
+  'Środa||Rumuński Martwy Ciąg z kettlem': ['wed','wed_a2'],
+  'Środa||Podciąganie KLASYCZNE (Nachwyt)': ['wed','wed_b1'],
+  'Środa||Wspinanie na linie': ['wed','wed_c2'],
+  'Środa||Podciąganie MŁOTKOWE (Neutralne)': ['wed','wed_c1'],
+  'Środa||Zwis na ręcznikach (chwyt neutralny)': ['wed','wed_d2'],
+  'Czwartek||Bar Dipy (Dipy na poręczach)': ['thu','thu_a2'],
+  'Czwartek||Wiosłowanie kettlem w opadzie (chwyt młotkowy)': ['thu','thu_b1'],
+  'Czwartek||Wykroki w tył': ['thu','thu_c1'],
+  'Czwartek||Pompki na opuszkach palców (Fingertip)': ['thu','thu_a1'],
+  'Czwartek||Kettlebell Pullover': ['mon','mon_c2'],
+  'Sobota||Podciąganie KLASYCZNE (Nachwyt)': ['sat','sat_c1'],
+  'Sobota||Półprzysiady z kettlem (Goblet do 90°)': ['sat','sat_c2'],
+  'Sobota||Biceps młotkowo z kettlem': ['sat','sat_b1'],
+  'Sobota||Triceps za głową z kettlem': ['sat','sat_b2'],
+  'Sobota||Podciąganie MŁOTKOWE (Neutralne)': ['sat','sat_a1'],
+  'Sobota||Kettlebell Swing': ['sat','sat_a2']
+};
+
+function parseCSV(text) {
+  var rows = [], row = [], field = '', inQuotes = false, i = 0;
+  while (i < text.length) {
+    var c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i+1] === '"') { field += '"'; i += 2; continue; }
+        inQuotes = false; i++; continue;
+      }
+      field += c; i++; continue;
+    } else {
+      if (c === '"') { inQuotes = true; i++; continue; }
+      if (c === ',') { row.push(field); field = ''; i++; continue; }
+      if (c === '\r') { i++; continue; }
+      if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      field += c; i++; continue;
+    }
+  }
+  if (field.length > 0 || row.length > 0) { row.push(field); rows.push(row); }
+  return rows.filter(function(r) { return r.length > 1 || (r.length === 1 && r[0] !== ''); });
+}
+
+function handleImportFile(input) {
+  var file = input.files && input.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var rows = parseCSV(e.target.result);
+      if (rows.length < 2) { showToast('⚠️ Pusty plik CSV'); return; }
+      var header = rows[0];
+      var idx = {
+        date: header.indexOf('Data'),
+        day: header.indexOf('Dzien'),
+        ex: header.indexOf('Cwiczenie'),
+        seria: header.indexOf('Seria'),
+        reps: header.indexOf('Powtorzenia'),
+        weight: header.indexOf('Ciezar (kg)'),
+        done: header.indexOf('Zaliczona')
+      };
+      var imported = 0, skipped = 0, skippedNames = {};
+      for (var r = 1; r < rows.length; r++) {
+        var row = rows[r];
+        if (!row || row.length < 5) continue;
+        var date = row[idx.date];
+        var dayLabel = row[idx.day];
+        var exName = row[idx.ex];
+        var seria = row[idx.seria];
+        var reps = row[idx.reps];
+        var weight = row[idx.weight];
+        var done = row[idx.done];
+        if (!date || !exName) continue;
+        var mapKey = dayLabel + '||' + exName;
+        var map = IMPORT_ALIASES[mapKey];
+        if (!map) {
+          skipped++;
+          skippedNames[exName] = true;
+          continue;
+        }
+        var dbKey = date + '__' + map[0] + '__' + map[1] + '__s' + seria;
+        DB[dbKey] = { r: reps || '', w: weight || '', c: (done === 'Tak') };
+        imported++;
+      }
+      save();
+      renderDay(curDay);
+      var skippedList = Object.keys(skippedNames);
+      var msg = '✅ Zaimportowano ' + imported + ' wpisów.';
+      if (skippedList.length) {
+        msg += ' Pominięto ' + skipped + ' wpisów spoza aktualnego planu (' + skippedList.join(', ') + ').';
+      }
+      showToast('✅ Import zakończony!');
+      if (skippedList.length) { showInfoModal(msg); } else { console.log(msg); }
+    } catch (err) {
+      console.error(err);
+      showToast('❌ Błąd importu pliku');
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+  input.value = '';
+}
+
 function switchDay(dayId, btn) {
   curDay = dayId;
   var btns = document.querySelectorAll('.day-btn');
@@ -385,7 +745,7 @@ function switchPage(pageId, btn) {
   document.getElementById('page-' + pageId).classList.add('active');
   btn.classList.add('active');
   if (pageId === 'history') renderHistory();
-  if (pageId === 'export') renderStats();
+  if (pageId === 'export') { renderStats(); renderProgressionSummary(); renderWeeklyVolume(); }
 }
 
 function renderHistory() {
@@ -429,7 +789,8 @@ function renderHistory() {
           if (s.r || s.w) {
             var txt = [s.r ? s.r+' powt.' : '', s.w ? s.w+' kg' : ''].filter(Boolean).join(' / ');
             if (s.c) txt += ' ✓';
-            h += '<span class="chip">' + txt + '</span>';
+            var dbKey = date + '__' + dayId + '__' + exId + '__' + s.s;
+            h += '<button type="button" class="chip" onclick="editHistoryEntry(\'' + dbKey + '\')">' + txt + '</button>';
           }
         });
         h += '</div></div>';
@@ -438,6 +799,110 @@ function renderHistory() {
     });
   });
   container.innerHTML = h;
+}
+
+// ---- WYKRES TRENDU ----
+function findExObj(dayId, exId) {
+  var day = DAYS[dayId];
+  if (!day) return null;
+  for (var i = 0; i < day.ss.length; i++) {
+    for (var j = 0; j < day.ss[i].ex.length; j++) {
+      if (day.ss[i].ex[j].id === exId) return day.ss[i].ex[j];
+    }
+  }
+  return null;
+}
+
+function getExerciseMetricSessions(dayId, exId) {
+  var byDate = {};
+  Object.keys(DB).forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    if (parts[1] !== dayId || parts[2] !== exId) return;
+    var v = DB[k];
+    if (!v) return;
+    var date = parts[0];
+    if (!byDate[date]) byDate[date] = {reps: [], weights: []};
+    var rn = parseFloat(String(v.r === undefined || v.r === null ? '' : v.r).replace(',', '.'));
+    if (!isNaN(rn)) byDate[date].reps.push(rn);
+    var wn = parseFloat(String(v.w === undefined || v.w === null ? '' : v.w).replace(',', '.'));
+    if (!isNaN(wn)) byDate[date].weights.push(wn);
+  });
+  var dates = Object.keys(byDate).sort();
+  return dates.map(function(d) {
+    var reps = byDate[d].reps, weights = byDate[d].weights;
+    return {
+      date: d,
+      topReps: reps.length ? Math.max.apply(null, reps) : null,
+      topWeight: weights.length ? Math.max.apply(null, weights) : null
+    };
+  });
+}
+
+function buildTrendSVG(dayId, ex) {
+  if (!ex) return '<div class="chart-empty">Brak danych.</div>';
+  var sessions = getExerciseMetricSessions(dayId, ex.id);
+  var useWeight = !ex.bw;
+  var points = sessions
+    .map(function(s) { return {date: s.date, val: useWeight ? s.topWeight : s.topReps}; })
+    .filter(function(p) { return p.val !== null; });
+  // jeśli ćwiczenie z kettlem nigdy nie miało ciężaru (0), spadnij na powtórzenia
+  if (useWeight && points.every(function(p) { return p.val === 0; })) {
+    useWeight = false;
+    points = sessions
+      .map(function(s) { return {date: s.date, val: s.topReps}; })
+      .filter(function(p) { return p.val !== null; });
+  }
+  if (points.length < 2) {
+    return '<div class="chart-empty">Za mało danych na wykres (potrzeba min. 2 sesji).</div>';
+  }
+  var w = 280, h = 100, padL = 32, padR = 10, padT = 10, padB = 18;
+  var plotW = w - padL - padR, plotH = h - padT - padB;
+  var vals = points.map(function(p) { return p.val; });
+  var minV = Math.min.apply(null, vals), maxV = Math.max.apply(null, vals);
+  if (minV === maxV) { minV -= 1; maxV += 1; }
+  var n = points.length;
+  var coords = points.map(function(p, i) {
+    var x = padL + (n === 1 ? plotW / 2 : (plotW * i / (n - 1)));
+    var y = padT + plotH - ((p.val - minV) / (maxV - minV)) * plotH;
+    return {x: x, y: y, val: p.val};
+  });
+  var poly = coords.map(function(c) { return c.x.toFixed(1) + ',' + c.y.toFixed(1); }).join(' ');
+  var dots = coords.map(function(c, i) {
+    var isLast = i === coords.length - 1;
+    return '<circle cx="' + c.x.toFixed(1) + '" cy="' + c.y.toFixed(1) + '" r="' + (isLast ? 4 : 2.5) + '" fill="' + (isLast ? '#4fc3f7' : '#1565c0') + '"/>';
+  }).join('');
+  var unit = useWeight ? 'kg' : 'powt.';
+  var firstDate = formatDateShort(points[0].date);
+  var lastDate = formatDateShort(points[points.length - 1].date);
+  var svg = '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" xmlns="http://www.w3.org/2000/svg">' +
+    '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#1e3050" stroke-width="1"/>' +
+    '<text x="2" y="' + (padT + 4) + '" font-size="9" fill="#546e7a">' + Math.round(maxV) + '</text>' +
+    '<text x="2" y="' + (padT + plotH) + '" font-size="9" fill="#546e7a">' + Math.round(minV) + '</text>' +
+    '<polyline points="' + poly + '" fill="none" stroke="#4fc3f7" stroke-width="2"/>' +
+    dots +
+    '</svg>';
+  return svg + '<div class="chart-caption">' + firstDate + ' → ' + lastDate + ' • oś: ' + unit + ' (najlepsza seria dnia)</div>';
+}
+
+function toggleChart(dayId, exId, btn) {
+  var container = document.getElementById('chart_' + exId);
+  if (!container) return;
+  if (container.style.display === 'none' || container.style.display === '') {
+    var ex = findExObj(dayId, exId);
+    container.innerHTML = buildTrendSVG(dayId, ex);
+    container.style.display = 'block';
+    btn.textContent = '📉 Ukryj wykres';
+  } else {
+    container.style.display = 'none';
+    container.innerHTML = '';
+    btn.textContent = '📈 Wykres';
+  }
+}
+
+function formatDateShort(ds) {
+  var d = new Date(ds + 'T00:00:00');
+  return d.toLocaleDateString('pl-PL', {day: 'numeric', month: 'short'});
 }
 
 function findExName(dayId, exId) {
@@ -454,6 +919,68 @@ function findExName(dayId, exId) {
 function formatDate(ds) {
   var d = new Date(ds);
   return d.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+
+// ---- OBJĘTOŚĆ TYGODNIOWA ----
+function getWeekKey(dateStr) {
+  var d = new Date(dateStr + 'T00:00:00');
+  var target = new Date(d.valueOf());
+  var dayNr = (d.getDay() + 6) % 7; // poniedziałek = 0
+  target.setDate(target.getDate() - dayNr + 3);
+  var firstThursday = target.valueOf();
+  target.setMonth(0, 1);
+  if (target.getDay() !== 4) {
+    target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+  }
+  var weekNum = 1 + Math.ceil((firstThursday - target) / (7 * 24 * 3600 * 1000));
+  return target.getFullYear() + '-W' + String(weekNum).padStart(2, '0');
+}
+
+function getWeekRangeLabel(dateStr) {
+  var d = new Date(dateStr + 'T00:00:00');
+  var dayNr = (d.getDay() + 6) % 7;
+  var monday = new Date(d); monday.setDate(d.getDate() - dayNr);
+  var sunday = new Date(monday); sunday.setDate(monday.getDate() + 6);
+  return formatDateShort(monday.toISOString().slice(0, 10)) + ' – ' + formatDateShort(sunday.toISOString().slice(0, 10));
+}
+
+function renderWeeklyVolume() {
+  var container = document.getElementById('weeklyVolContent');
+  if (!container) return;
+  var weeks = {};
+  Object.keys(DB).forEach(function(k) {
+    var parts = k.split('__');
+    if (parts.length < 4) return;
+    var v = DB[k];
+    if (!v || !v.c) return; // liczymy tylko zaliczone serie
+    var date = parts[0];
+    var wk = getWeekKey(date);
+    if (!weeks[wk]) weeks[wk] = {sets: 0, reps: 0, tonnage: 0, dates: {}, sampleDate: date};
+    weeks[wk].sets++;
+    weeks[wk].dates[date] = true;
+    var rn = parseFloat(String(v.r === undefined || v.r === null ? '' : v.r).replace(',', '.'));
+    var wn = parseFloat(String(v.w === undefined || v.w === null ? '' : v.w).replace(',', '.'));
+    if (!isNaN(rn)) {
+      weeks[wk].reps += rn;
+      if (!isNaN(wn) && wn > 0) weeks[wk].tonnage += rn * wn;
+    }
+  });
+  var keys = Object.keys(weeks).sort().reverse().slice(0, 8);
+  if (keys.length === 0) {
+    container.innerHTML = '<div class="prog-empty">Brak jeszcze danych. Pojawi się tu, gdy zaliczysz pierwsze serie.</div>';
+    return;
+  }
+  var h = '';
+  keys.forEach(function(wk) {
+    var w = weeks[wk];
+    var sessionCount = Object.keys(w.dates).length;
+    h += '<div class="prog-summary-card"><div class="ps-day">📆 ' + wk + ' (' + getWeekRangeLabel(w.sampleDate) + ') • ' + sessionCount + ' sesji</div>';
+    h += '<div class="prog-summary-item">✅ ' + w.sets + ' zaliczonych serii</div>';
+    h += '<div class="prog-summary-item">🔁 ' + Math.round(w.reps) + ' powtórzeń łącznie</div>';
+    if (w.tonnage > 0) h += '<div class="prog-summary-item">🏋️ ' + Math.round(w.tonnage) + ' kg tonażu (Σ powt.×kg)</div>';
+    h += '</div>';
+  });
+  container.innerHTML = h;
 }
 
 function renderStats() {
@@ -494,12 +1021,14 @@ function exportCSV() {
   });
   downloadFile('trening_wyniki.csv', csv, 'text/csv;charset=utf-8;');
   showToast('📊 CSV pobrane!');
+  markBackupDone();
 }
 
 function exportJSON() {
   var out = {exportDate: new Date().toISOString(), data: DB};
   downloadFile('trening_wyniki.json', JSON.stringify(out, null, 2), 'application/json');
   showToast('📋 JSON pobrane!');
+  markBackupDone();
 }
 
 function downloadFile(name, content, type) {
@@ -514,23 +1043,365 @@ function downloadFile(name, content, type) {
   URL.revokeObjectURL(url);
 }
 
+// ---- WŁASNE OKIENKA (zamiast confirm/prompt/alert, które bywają blokowane w podglądzie) ----
+function showConfirmModal(message, onConfirm) {
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  var p = document.createElement('p');
+  p.textContent = message;
+  var actions = document.createElement('div');
+  actions.className = 'modal-actions';
+  var cancelBtn = document.createElement('button');
+  cancelBtn.className = 'modal-btn cancel';
+  cancelBtn.textContent = 'Anuluj';
+  var confirmBtn = document.createElement('button');
+  confirmBtn.className = 'modal-btn confirm';
+  confirmBtn.textContent = 'Tak, usuń';
+  actions.appendChild(cancelBtn);
+  actions.appendChild(confirmBtn);
+  box.appendChild(p);
+  box.appendChild(actions);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  cancelBtn.onclick = function() { document.body.removeChild(overlay); };
+  confirmBtn.onclick = function() { document.body.removeChild(overlay); onConfirm(); };
+}
+
+function showPromptModal(message, defaultVal, onConfirm) {
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  var p = document.createElement('p');
+  p.textContent = message;
+  var input = document.createElement('input');
+  input.className = 'modal-input';
+  input.type = 'text';
+  input.inputMode = 'decimal';
+  input.value = defaultVal;
+  var actions = document.createElement('div');
+  actions.className = 'modal-actions';
+  var cancelBtn = document.createElement('button');
+  cancelBtn.className = 'modal-btn cancel';
+  cancelBtn.textContent = 'Anuluj';
+  var okBtn = document.createElement('button');
+  okBtn.className = 'modal-btn confirm ok';
+  okBtn.textContent = 'Zatwierdź';
+  actions.appendChild(cancelBtn);
+  actions.appendChild(okBtn);
+  box.appendChild(p);
+  box.appendChild(input);
+  box.appendChild(actions);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  input.focus();
+  cancelBtn.onclick = function() { document.body.removeChild(overlay); };
+  okBtn.onclick = function() { var val = input.value; document.body.removeChild(overlay); onConfirm(val); };
+}
+
+// ---- TIMER ODPOCZYNKU + TABATA ----
+function openTimerModal() {
+  if (document.getElementById('timerOverlay')) return;
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.id = 'timerOverlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box timer-box';
+  box.innerHTML =
+    '<div class="timer-display" id="timerDisplay">--:--</div>' +
+    '<div class="timer-sub" id="timerSub"></div>' +
+    '<div class="timer-picker" id="timerPicker">' +
+      '<button class="ebtn jsn" onclick="startTimer(\'rest60\')">⏸️ Odpoczynek 60s</button>' +
+      '<button class="ebtn jsn" onclick="startTimer(\'rest90\')">⏸️ Odpoczynek 90s</button>' +
+      '<button class="ebtn red" onclick="startTimer(\'tabata\')">🔥 Tabata (4:00, 8 rund)</button>' +
+    '</div>' +
+    '<div class="timer-controls" id="timerControls" style="display:none">' +
+      '<button class="modal-btn cancel" id="timerPauseBtn" onclick="pauseResumeTimer()">⏸️ Pauza</button>' +
+      '<button class="modal-btn confirm" onclick="stopTimer()">⏹️ Stop</button>' +
+    '</div>' +
+    '<button class="modal-btn cancel" style="margin-top:6px;width:100%" onclick="closeTimerModal()">Zamknij</button>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+}
+
+function closeTimerModal() {
+  stopTimerInterval();
+  var overlay = document.getElementById('timerOverlay');
+  if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+}
+
+function startTimer(mode) {
+  stopTimerInterval();
+  if (!TIMER.audioCtx) {
+    try { TIMER.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+  }
+  TIMER.mode = mode;
+  var picker = document.getElementById('timerPicker');
+  var controls = document.getElementById('timerControls');
+  if (picker) picker.style.display = 'none';
+  if (controls) controls.style.display = 'flex';
+  if (mode === 'rest60') {
+    TIMER.remaining = 60; TIMER.phaseLabel = 'Odpoczynek';
+  } else if (mode === 'rest90') {
+    TIMER.remaining = 90; TIMER.phaseLabel = 'Odpoczynek';
+  } else if (mode === 'tabata') {
+    TIMER.tabataRound = 1;
+    TIMER.tabataPhase = 'work';
+    TIMER.remaining = 20;
+    TIMER.phaseLabel = 'PRACA';
+  }
+  updateTimerDisplay();
+  TIMER.interval = setInterval(tickTimer, 1000);
+}
+
+function tickTimer() {
+  TIMER.remaining--;
+  if (TIMER.remaining < 0) {
+    if (TIMER.mode === 'tabata') {
+      beep('phase');
+      if (navigator.vibrate) navigator.vibrate(150);
+      if (TIMER.tabataPhase === 'work') {
+        TIMER.tabataPhase = 'rest';
+        TIMER.remaining = 10;
+        TIMER.phaseLabel = 'ODPOCZYNEK';
+      } else {
+        TIMER.tabataRound++;
+        if (TIMER.tabataRound > 8) { finishTimer(); return; }
+        TIMER.tabataPhase = 'work';
+        TIMER.remaining = 20;
+        TIMER.phaseLabel = 'PRACA';
+      }
+    } else {
+      finishTimer();
+      return;
+    }
+  } else if (TIMER.remaining <= 3) {
+    beep('tick');
+  }
+  updateTimerDisplay();
+}
+
+function finishTimer() {
+  stopTimerInterval();
+  beep('done');
+  if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 300]);
+  var display = document.getElementById('timerDisplay');
+  var sub = document.getElementById('timerSub');
+  if (display) { display.textContent = '✅'; display.className = 'timer-display'; }
+  if (sub) sub.textContent = 'Koniec!';
+  showToast('⏱️ Czas minął!');
+}
+
+function updateTimerDisplay() {
+  var display = document.getElementById('timerDisplay');
+  var sub = document.getElementById('timerSub');
+  if (!display) return;
+  var m = Math.floor(TIMER.remaining / 60);
+  var s = TIMER.remaining % 60;
+  display.textContent = m + ':' + String(s).padStart(2, '0');
+  if (TIMER.mode === 'tabata') {
+    display.className = 'timer-display ' + (TIMER.tabataPhase === 'work' ? 'work' : 'rest');
+    if (sub) sub.textContent = TIMER.phaseLabel + ' • Runda ' + TIMER.tabataRound + '/8';
+  } else {
+    display.className = 'timer-display rest';
+    if (sub) sub.textContent = TIMER.phaseLabel;
+  }
+}
+
+function pauseResumeTimer() {
+  var btn = document.getElementById('timerPauseBtn');
+  if (TIMER.interval) {
+    clearInterval(TIMER.interval);
+    TIMER.interval = null;
+    if (btn) btn.textContent = '▶️ Wznów';
+  } else {
+    TIMER.interval = setInterval(tickTimer, 1000);
+    if (btn) btn.textContent = '⏸️ Pauza';
+  }
+}
+
+function stopTimerInterval() {
+  if (TIMER.interval) { clearInterval(TIMER.interval); TIMER.interval = null; }
+}
+
+function stopTimer() {
+  stopTimerInterval();
+  var picker = document.getElementById('timerPicker');
+  var controls = document.getElementById('timerControls');
+  var display = document.getElementById('timerDisplay');
+  var sub = document.getElementById('timerSub');
+  if (picker) picker.style.display = 'flex';
+  if (controls) controls.style.display = 'none';
+  if (display) { display.textContent = '--:--'; display.className = 'timer-display'; }
+  if (sub) sub.textContent = '';
+}
+
+function beep(type) {
+  if (!TIMER.audioCtx) return;
+  try {
+    var ctx = TIMER.audioCtx;
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = type === 'done' ? 880 : (type === 'phase' ? 700 : 500);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    osc.start();
+    osc.stop(ctx.currentTime + (type === 'done' ? 0.4 : 0.12));
+  } catch (e) { /* dźwięk niedostępny - nieistotne dla działania timera */ }
+}
+
+function escapeHtml(str) {
+  return String(str === undefined || str === null ? '' : str)
+    .replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ---- EDYCJA WPISU W HISTORII ----
+function editHistoryEntry(dbKey) {
+  var v = DB[dbKey] || {r: '', w: '', c: false};
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  box.innerHTML =
+    '<p>Edytuj wpis</p>' +
+    '<div class="edit-field"><label>Powtórzenia</label><input type="text" inputmode="numeric" class="modal-input" id="editR" value="' + escapeHtml(v.r || '') + '"></div>' +
+    '<div class="edit-field"><label>Ciężar (kg)</label><input type="text" inputmode="decimal" class="modal-input" id="editW" value="' + escapeHtml(v.w || '') + '"></div>' +
+    '<label class="edit-check"><input type="checkbox" id="editC" ' + (v.c ? 'checked' : '') + '> Zaliczona</label>' +
+    '<div class="modal-actions">' +
+      '<button class="modal-btn cancel" id="editDeleteBtn">🗑️ Usuń</button>' +
+      '<button class="modal-btn confirm ok" id="editSaveBtn">Zapisz</button>' +
+    '</div>' +
+    '<button class="modal-btn cancel" style="margin-top:8px;width:100%" id="editCancelBtn">Anuluj</button>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+
+  document.getElementById('editSaveBtn').onclick = function() {
+    var r = document.getElementById('editR').value;
+    var w = document.getElementById('editW').value;
+    var c = document.getElementById('editC').checked;
+    DB[dbKey] = {r: r, w: w, c: c};
+    save();
+    document.body.removeChild(overlay);
+    renderHistory();
+    renderDay(curDay);
+    showToast('✏️ Wpis zaktualizowany');
+  };
+  document.getElementById('editDeleteBtn').onclick = function() {
+    delete DB[dbKey];
+    save();
+    document.body.removeChild(overlay);
+    renderHistory();
+    renderDay(curDay);
+    showToast('🗑️ Wpis usunięty');
+  };
+  document.getElementById('editCancelBtn').onclick = function() { document.body.removeChild(overlay); };
+}
+
+// ---- EDYCJA / PODMIANA ĆWICZENIA W PLANIE ----
+function editExercise(dayId, exId) {
+  var rawEx = findExObj(dayId, exId);
+  if (!rawEx) return;
+  var eff = getEffectiveEx(dayId, rawEx);
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  box.innerHTML =
+    '<p>Edytuj ćwiczenie (' + rawEx.code + ')</p>' +
+    '<div class="edit-field"><label>Nazwa</label><input type="text" class="modal-input" id="editExName" value="' + escapeHtml(eff.name) + '"></div>' +
+    '<div class="edit-field"><label>Cel (np. "3 × 12 powt.")</label><input type="text" class="modal-input" id="editExTarget" value="' + escapeHtml(eff.target) + '"></div>' +
+    '<div class="edit-field"><label>Notatka (opcjonalnie)</label><input type="text" class="modal-input" id="editExNote" value="' + escapeHtml(eff.note || '') + '"></div>' +
+    '<label class="edit-check"><input type="checkbox" id="editExBw" ' + (eff.bw ? 'checked' : '') + '> Czysta kalistenika (bez kettla, domyślny ciężar 0)</label>' +
+    '<div class="edit-field"><label>Górny cel powt. do progresji (puste = wyłącz progresję dla tego ćwiczenia)</label><input type="text" inputmode="numeric" class="modal-input" id="editExPMax" value="' + (eff.pMax !== undefined && eff.pMax !== null ? eff.pMax : '') + '"></div>' +
+    '<div class="modal-actions">' +
+      '<button class="modal-btn cancel" id="editExRevertBtn">↩️ Oryginał</button>' +
+      '<button class="modal-btn confirm ok" id="editExSaveBtn">Zapisz</button>' +
+    '</div>' +
+    '<button class="modal-btn cancel" style="margin-top:8px;width:100%" id="editExCancelBtn">Anuluj</button>';
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+
+  document.getElementById('editExSaveBtn').onclick = function() {
+    var name = document.getElementById('editExName').value.trim() || rawEx.name;
+    var target = document.getElementById('editExTarget').value.trim() || rawEx.target;
+    var note = document.getElementById('editExNote').value.trim();
+    var bw = document.getElementById('editExBw').checked;
+    var pMaxRaw = document.getElementById('editExPMax').value.trim();
+    var override = {name: name, target: target, note: note, bw: bw};
+    if (pMaxRaw === '') {
+      override.pSkip = true;
+      override.pMax = undefined;
+    } else {
+      var pMax = parseFloat(pMaxRaw.replace(',', '.'));
+      if (!isNaN(pMax)) { override.pMax = pMax; override.pSkip = false; }
+    }
+    PROG[dayId + '__' + exId] = override;
+    saveProg();
+    document.body.removeChild(overlay);
+    renderDay(curDay);
+    showToast('✏️ Ćwiczenie zaktualizowane');
+  };
+  document.getElementById('editExRevertBtn').onclick = function() {
+    delete PROG[dayId + '__' + exId];
+    saveProg();
+    document.body.removeChild(overlay);
+    renderDay(curDay);
+    showToast('↩️ Przywrócono oryginalne ćwiczenie');
+  };
+  document.getElementById('editExCancelBtn').onclick = function() { document.body.removeChild(overlay); };
+}
+
+function showInfoModal(message) {
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  var p = document.createElement('p');
+  p.textContent = message;
+  var actions = document.createElement('div');
+  actions.className = 'modal-actions';
+  var okBtn = document.createElement('button');
+  okBtn.className = 'modal-btn confirm ok';
+  okBtn.textContent = 'OK';
+  actions.appendChild(okBtn);
+  box.appendChild(p);
+  box.appendChild(actions);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  okBtn.onclick = function() { document.body.removeChild(overlay); };
+}
+
 function clearToday() {
-  if (!confirm('Wyczyścić dzisiejszy trening?')) return;
-  var today = todayStr();
-  Object.keys(DB).forEach(function(k) {
-    if (k.indexOf(today) === 0) delete DB[k];
+  showConfirmModal('Wyczyścić dzisiejszy trening?', function() {
+    var today = todayStr();
+    Object.keys(DB).forEach(function(k) {
+      if (k.indexOf(today) === 0) delete DB[k];
+    });
+    save();
+    renderDay(curDay);
+    showToast('🔄 Dzisiejszy trening wyczyszczony!');
   });
-  save();
-  renderDay(curDay);
-  showToast('🔄 Dzisiejszy trening wyczyszczony!');
 }
 
 function clearAll() {
-  if (!confirm('Usunąć CAŁĄ historię treningów? Nie można cofnąć!')) return;
-  DB = {};
-  save();
-  renderDay(curDay);
-  showToast('🗑️ Historia wyczyszczona!');
+  showConfirmModal('Usunąć CAŁĄ historię treningów? Nie można cofnąć!', function() {
+    DB = {};
+    save();
+    renderDay(curDay);
+    showToast('🗑️ Historia wyczyszczona!');
+  });
+}
+
+function resetProgOverrides() {
+  showConfirmModal('Zresetować wszystkie zatwierdzone cele progresji do wartości bazowych z planu?', function() {
+    PROG = {};
+    saveProg();
+    renderDay(curDay);
+    showToast('🔄 Cele progresji zresetowane!');
+  });
 }
 
 function showToast(msg) {
@@ -540,11 +1411,72 @@ function showToast(msg) {
   setTimeout(function() { t.classList.remove('show'); }, 2200);
 }
 
+// ---- PRZYPOMNIENIE O BACKUPIE ----
+function getBackupMeta() {
+  try { return JSON.parse(localStorage.getItem('trening_v4_backup_meta') || '{}'); }
+  catch (e) { return {}; }
+}
+
+function saveBackupMeta(meta) {
+  localStorage.setItem('trening_v4_backup_meta', JSON.stringify(meta));
+}
+
+function markBackupDone() {
+  var meta = getBackupMeta();
+  meta.lastBackup = todayStr();
+  delete meta.snoozeUntil;
+  saveBackupMeta(meta);
+  hideBackupBanner();
+}
+
+function snoozeBackupReminder() {
+  var meta = getBackupMeta();
+  var d = new Date();
+  d.setDate(d.getDate() + 3);
+  meta.snoozeUntil = d.toISOString().slice(0, 10);
+  saveBackupMeta(meta);
+  hideBackupBanner();
+}
+
+function hideBackupBanner() {
+  var el = document.getElementById('backupBanner');
+  if (el) el.innerHTML = '';
+}
+
+function daysSince(dateStr) {
+  var d = new Date(dateStr + 'T00:00:00');
+  var now = new Date(todayStr() + 'T00:00:00');
+  return Math.round((now - d) / (24 * 3600 * 1000));
+}
+
+function checkBackupReminder() {
+  var el = document.getElementById('backupBanner');
+  if (!el) return;
+  if (Object.keys(DB).length === 0) return; // nie strasz przy pustej appce
+  var meta = getBackupMeta();
+  var today = todayStr();
+  if (meta.snoozeUntil && meta.snoozeUntil > today) return;
+  var days = meta.lastBackup ? daysSince(meta.lastBackup) : null;
+  if (days === null || days >= 14) {
+    var msg = days === null ? 'Nigdy nie zrobiłeś jeszcze backupu danych.' : ('Ostatni backup był ' + days + ' dni temu.');
+    el.innerHTML =
+      '<div class="backup-banner">' +
+        '<span>💾 ' + msg + ' Dane żyją tylko w tej przeglądarce — wyczyszczenie jej = utrata historii.</span>' +
+        '<div class="backup-banner-actions">' +
+          '<button class="bb-btn primary" onclick="exportCSV()">Eksportuj teraz</button>' +
+          '<button class="bb-btn" onclick="snoozeBackupReminder()">Przypomnij za 3 dni</button>' +
+        '</div>' +
+      '</div>';
+  }
+}
+
 function init() {
   load();
+  loadProg();
   var now = new Date();
   document.getElementById('hDate').textContent = now.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
   renderDay('mon');
+  checkBackupReminder();
 }
 
 init();
