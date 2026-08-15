@@ -531,7 +531,7 @@ function getExerciseSessions(dayId, exId) {
     var date = parts[0];
     var s = parseInt(parts[3].replace('s', ''), 10);
     var v = DB[k];
-    if (!v || (!v.r && !v.w && !v.c)) return;
+    if (!v || !v.c) return; // liczymy tylko ZALICZONE serie (checkbox), nie auto-wypełnione a niezatwierdzone
     if (!byDate[date]) byDate[date] = {};
     byDate[date][s] = v;
   });
@@ -729,11 +729,51 @@ function handleImportFile(input) {
   input.value = '';
 }
 
+// ---- AUTO-WYPEŁNIANIE Z OSTATNIEJ SESJI ----
+function getLastLoggedSet(dayId, exId, setNum) {
+  var suffix = '__' + dayId + '__' + exId + '__s' + setNum;
+  var today = todayStr();
+  var best = null;
+  Object.keys(DB).forEach(function(k) {
+    if (k.indexOf(suffix) === -1) return;
+    var date = k.split('__')[0];
+    if (date === today) return; // pomijamy dzisiejszy wpis
+    var v = DB[k];
+    if (!v || !v.c) return; // tylko zaliczone serie liczą się jako "ostatnia sesja"
+    if (best === null || date > best.date) best = {date: date, v: v};
+  });
+  return best ? best.v : null;
+}
+
+function prefillFromLastSession(dayId) {
+  var day = DAYS[dayId];
+  if (!day) return;
+  var changed = false;
+  day.ss.forEach(function(ss) {
+    ss.ex.forEach(function(rawEx) {
+      var ex = getEffectiveEx(dayId, rawEx);
+      for (var s = 1; s <= NUM_SETS; s++) {
+        var todayKey = makeKey(dayId, ex.id, s);
+        var existing = DB[todayKey];
+        if (existing && (existing.r || existing.w)) continue; // już coś dziś wpisane – nie nadpisujemy
+        var last = getLastLoggedSet(dayId, ex.id, s);
+        if (!last) continue;
+        var wVal = last.w;
+        if (ex.bw && (wVal === undefined || wVal === null || wVal === '')) wVal = '0';
+        DB[todayKey] = {r: last.r || '', w: wVal || (ex.bw ? '0' : ''), c: false};
+        changed = true;
+      }
+    });
+  });
+  if (changed) save();
+}
+
 function switchDay(dayId, btn) {
   curDay = dayId;
   var btns = document.querySelectorAll('.day-btn');
   for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
   btn.classList.add('active');
+  prefillFromLastSession(dayId);
   renderDay(dayId);
 }
 
@@ -820,7 +860,7 @@ function getExerciseMetricSessions(dayId, exId) {
     if (parts.length < 4) return;
     if (parts[1] !== dayId || parts[2] !== exId) return;
     var v = DB[k];
-    if (!v) return;
+    if (!v || !v.c) return; // wykres pokazuje tylko zaliczone serie
     var date = parts[0];
     if (!byDate[date]) byDate[date] = {reps: [], weights: []};
     var rn = parseFloat(String(v.r === undefined || v.r === null ? '' : v.r).replace(',', '.'));
@@ -1475,6 +1515,7 @@ function init() {
   loadProg();
   var now = new Date();
   document.getElementById('hDate').textContent = now.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  prefillFromLastSession('mon');
   renderDay('mon');
   checkBackupReminder();
 }
