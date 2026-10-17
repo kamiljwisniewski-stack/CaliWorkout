@@ -100,6 +100,13 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
 .edit-field{margin-bottom:10px;text-align:left}
 .edit-field label{display:block;font-size:0.72em;color:#78909c;margin-bottom:4px}
 .edit-check{display:flex;align-items:center;gap:8px;font-size:0.8em;color:#e0e0e0;margin-bottom:14px;text-align:left}
+.calories-box{background:#0d1b2a;border:1px solid #1e3050;border-radius:8px;padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.calories-box label{font-size:0.78em;color:#ffab91;font-weight:bold;white-space:nowrap}
+.calories-input{flex:1;background:#131e2e;border:1px solid #2a3a5c;border-radius:6px;padding:8px;color:#e0e0e0;font-size:0.85em;text-align:center;outline:none}
+.calories-input:focus{border-color:#4fc3f7}
+.soft-toggle{background:#0d1b2a;border:1px solid #1e3050;border-radius:8px;padding:10px 12px;margin-bottom:10px;display:flex;align-items:center;gap:10px;font-size:0.78em;color:#ce93d8;cursor:pointer}
+.soft-toggle input{width:18px;height:18px;flex-shrink:0}
+.soft-banner{background:linear-gradient(135deg,#4a148c,#6a1b9a);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:0.75em;color:#f3e5f5}
 .chart-toggle-btn:active{background:#1e3a5f}
 .chart-container{margin-top:8px;background:#0a1420;border-radius:8px;padding:8px}
 .chart-empty{font-size:0.72em;color:#546e7a;text-align:center;padding:10px}
@@ -108,6 +115,7 @@ body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;padding-bottom:80px
 .step-btn{width:20px;height:28px;flex-shrink:0;background:#1565c0;border:none;border-radius:5px;color:#fff;font-size:0.95em;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;user-select:none}
 .step-btn:active{background:#0d47a1}
 .step-input{flex:1;min-width:0;padding:7px 2px}
+.step-input.hint{color:#5c7a99;font-style:italic}
 .modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px}
 .modal-box{background:#0f2030;border:1px solid #2a3a5c;border-radius:12px;padding:18px;max-width:320px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
 .modal-box p{color:#e0e0e0;font-size:0.88em;line-height:1.5;margin-bottom:14px}
@@ -236,42 +244,42 @@ var DAYS = {
   mon:{
     label:'Poniedziałek', sub:'Pchanie + Siła Jednorącz + Ab Roller', color:'mon',
     ss:[
-      {title:'SUPER SERIA A — Klatka / Triceps', ex:[
-        {id:'mon_a1', code:'A1', name:'Pompki diamentowe', target:'3 × 10 powt.', note:'', pMax:10, next:'Deficit diamond push-ups – dłonie na podwyższeniu ok. 5 cm.', bw:true},
-        {id:'mon_a2', code:'A2', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:'', pMax:15, next:'Dodaj tempo 3s w dół albo obciążenie (plecak/kamizelka).', bw:true}
+      {title:'SUPER SERIA A — Moc jednorącz (na świeżo!)', soft:true, ex:[
+        {id:'mon_c1', code:'A1', name:'Pompki jednorącz (lub regresja na podwyższeniu)', target:'3 × 3-5 powt./stronę', note:'Przesunięte na początek treningu, żeby robić je na świeżych rękach – to najbardziej wymagające technicznie ćwiczenie w tym dniu. Genialna siła pod skały. Jeśli na ziemi za ciężko, zrób z dłońmi na podwyższeniu, np. na ławce – im wyżej ręka, tym łatwiej.', pMax:5, next:'Niższe podwyższenie – zbliżaj się do pełnej wersji z ziemi.', bw:true},
+        {id:'mon_a1', code:'A2', name:'Pompki diamentowe', target:'3 × 10 powt.', note:'', pMax:10, next:'Deficit diamond push-ups – dłonie na podwyższeniu ok. 5 cm.', bw:true}
       ]},
-      {title:'SUPER SERIA B — Klatka / Poręcze / Brzuch', ex:[
-        {id:'mon_b1', code:'B1', name:'Dipy na poręczach (cc)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem (pas/plecak).', bw:true},
-        {id:'mon_b2', code:'B2', name:'Krzesełko na poręczach (dynamiczne przyciąganie kolan)', target:'3 × 12–15 powt.', note:'', pMax:15, next:'Przyciąganie kolan wyżej (do klatki) lub wolniejsze tempo.', bw:true}
+      {title:'SUPER SERIA B — Klatka / Poręcze', soft:true, ex:[
+        {id:'mon_a2', code:'B1', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:'', pMax:15, next:'Dodaj tempo 3s w dół albo obciążenie (plecak/kamizelka).', bw:true},
+        {id:'mon_b1', code:'B2', name:'Dipy na poręczach (cc)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem (pas/plecak).', bw:true}
       ]},
-      {title:'SUPER SERIA C — Moc jednorącz + Fizjo', ex:[
-        {id:'mon_c1', code:'C1', name:'Pompki jednorącz (lub regresja na podwyższeniu)', target:'3 × 3-5 powt./stronę', note:'Genialna siła pod skały. Jeśli na ziemi za ciężko, zrób z dłońmi na podwyższeniu, np. na ławce – im wyżej ręka, tym łatwiej.', pMax:5, next:'Niższe podwyższenie – zbliżaj się do pełnej wersji z ziemi.', bw:true},
-        {id:'mon_c2', code:'C2', name:'Kettlebell Pullover', target:'3 × 12 powt.', note:'Zalecenie fizjo. Leżenie na plecach, powolne przenoszenie kettla prostymi rękami za głowę na ziemię i powrót.', pMax:12, next:'Cięższy kettlebell.'}
+      {title:'SUPER SERIA C — Core', ex:[
+        {id:'mon_b2', code:'C1', name:'Krzesełko na poręczach (dynamiczne przyciąganie kolan)', target:'3 × 12–15 powt.', note:'', pMax:15, next:'Przyciąganie kolan wyżej (do klatki) lub wolniejsze tempo.', bw:true},
+        {id:'mon_d2', code:'C2', name:'Ab Roller (kółko na brzuch)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Dłuższy rollout (bliżej pełnego wyprostu) lub rollout stojąc.', bw:true}
       ]},
-      {title:'SUPER SERIA D — Tylny bark + Core', ex:[
-        {id:'mon_d1', code:'D1', name:'Kettlebell Bent-Over Reverse Fly (rozpiętki tylnego barku z kettlami)', target:'3 × 12–15 powt.', note:'Trzymasz kettle za rogi klamry, opad tułowia jak przy wiosłowaniu, unosisz ramiona na boki (nie do tyłu). Zamiennik pod balans barków – wspinacze mają przerośnięty przód barku, a zaniedbany tył. Kiedyś możesz też spróbować wersji z gumą (Face Pull), jeśli będzie wygodniej.', pMax:15, next:'Cięższy kettlebell lub dodaj chwilę przytrzymania na górze ruchu.'},
-        {id:'mon_d2', code:'D2', name:'Ab Roller (kółko na brzuch)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Dłuższy rollout (bliżej pełnego wyprostu) lub rollout stojąc.', bw:true}
+      {title:'SUPER SERIA D — Antagonista: Wis + Pchanie', ex:[
+        {id:'mon_c2n', code:'D1', name:'Zwis na drążku nachwytem (Dead Hang)', target:'3 × 20–30 sek.', note:'Pasywny wis na prostych rękach – antagonista dla reszty dnia złożonego z samego pchania, i dekompresja barku po seriach dipów/pompek. Zastępuje poprzedni Dip Support Hold (też pchający, czyli duplikował resztę dnia) – teraz D to prawdziwa superseria antagonistyczna: wis (ciągnięcie) + Scapular Push-ups (pchanie/stabilizacja). Dodatkowo rekompensuje chwytową objętość, której zimą brakuje z bulderów.', pMax:30, next:'Dłuższy wis lub dodaj lekkie obciążenie (pas z talerzem).', bw:true},
+        {id:'mon_d1n', code:'D2', name:'Pompki z wysuwaniem łopatek (Scapular Push-ups)', target:'3 × 12–15 powt.', note:'Pozycja deski na wyprostowanych rękach, bez uginania łokci wypychasz i cofasz łopatki. Czysta kalistenika, bez sprzętu – dba o zdrowie barku (serratus anterior). Zamiennik usuniętego Kettlebell Bent-Over Reverse Fly.', pMax:15, next:'Wolniejsze tempo lub dodaj przytrzymanie na górze ruchu.', bw:true}
       ]}
     ],
-    tabata:'Hollow Body Hold – spięcie brzucha, lędźwie wciśnięte w ziemię, ręce wzdłuż ciała.'
+    tabata:'Przysiady powietrzne (Air Squats) – ciągły, kontrolowany ruch przez całe 20 sekund pracy. Jedyna bezpośrednia praca nóg w tym dniu – reszta treningu to góra ciała.'
   },
   wed:{
     label:'Środa', sub:'Plecy (Lina + Drążek TEST) + Wycieraczki w zwisie + Nogi (Tył)', color:'wed',
     ss:[
-      {title:'SUPER SERIA A — Najwyższa dynamika i świeżość', ex:[
+      {title:'SUPER SERIA A — Najwyższa dynamika i świeżość', soft:true, ex:[
         {id:'wed_a1', code:'A1', name:'Muscle-Up (Wejście siłowe)', target:'3 × 2–3 powt.', note:'⚠️ Odpuść natychmiast przy ostrym bólu przedramienia lub łokcia!', pMax:3, next:'Więcej kontroli w fazie przejścia / spróbuj strict bez kipu.', bw:true},
         {id:'wed_a2', code:'A2', name:'Rumuński Martwy Ciąg z kettlem', target:'3 × 12 powt.', note:'Kolana lekko odblokowane – bezpieczne dla łąkotki.', pMax:12, next:'Cięższy kettlebell.'}
       ]},
-      {title:'SUPER SERIA B — Mocny chwyt pod rotację brzucha', ex:[
+      {title:'SUPER SERIA B — Mocny chwyt pod rotację brzucha', soft:true, ex:[
         {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'Ścisła kontrola ruchu, bez szarpania na dole.', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
         {id:'wed_b2', code:'B2', name:'Wycieraczki w zwisie na drążku (Hanging Windshields)', target:'3 × 8–10 powt.', note:'Rób je, póki masz siłę utrzymać się na drążku.', pMax:10, next:'Pełniejszy zakres ruchu (bliżej drążka) lub więcej powtórzeń.', bw:true}
       ]},
-      {title:'SUPER SERIA C — Moc chwytu neutralnego', ex:[
+      {title:'SUPER SERIA C — Chwyt neutralny + Push jednorącz', ex:[
         {id:'wed_c1', code:'C1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6 powt.', note:'', pMax:6, next:'Dodaj obciążenie (pas/plecak).', bw:true},
-        {id:'wed_c2', code:'C2', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta.', pSkip:true, next:'Mniej pomocy nóg lub szybszy czas wejścia.', bw:true}
+        {id:'wed_d1', code:'C2', name:'Pompki Archera (Archer Push-ups)', target:'3 × 6–8 powt./stronę', note:'Push zamiast kolejnego ciągnięcia – daje chwytowi chwilę oddechu przed finiszem z liną.', pMax:8, next:'Głębszy archer, bliżej pełnej wersji jednorącz.', bw:true}
       ]},
-      {title:'SUPER SERIA D — Archer + Izometryczne wykończenie dłoni', ex:[
-        {id:'wed_d1', code:'D1', name:'Pompki Archera (Archer Push-ups)', target:'3 × 6–8 powt./stronę', note:'', pMax:8, next:'Głębszy archer, bliżej pełnej wersji jednorącz.', bw:true},
+      {title:'SUPER SERIA D — Grip finisher (Lina + Zwis)', ex:[
+        {id:'wed_c2', code:'D1', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta. Celowo na koniec, razem ze zwisem – to główny finiszer chwytu w tym dniu.', pSkip:true, next:'Mniej pomocy nóg lub szybszy czas wejścia.', bw:true},
         {id:'wed_d2', code:'D2', name:'Zwis na ręcznikach (chwyt neutralny)', target:'3 × 10–15 sek.', note:'Czysta izometria na sam koniec, gdy palce mogą już tylko bez ruchu wisieć. Jeśli przedramię pali – oprzyj lekko palce stóp o ziemię.', pMax:15, next:'Dłuższy czas zwisu lub cieńszy ręcznik.', bw:true}
       ]}
     ],
@@ -280,15 +288,15 @@ var DAYS = {
   thu:{
     label:'Czwartek', sub:'Barki + Klatka + Palce + Wykroki + Rozpiętki', color:'thu',
     ss:[
-      {title:'SUPER SERIA A — Palce (na świeżo!)', ex:[
-        {id:'thu_a1', code:'A1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:'Przesunięte na początek treningu, żebyś robił je na świeżych, nieprzemęczonych palcach – to najbardziej ryzykowne ćwiczenie w tygodniu dla ścięgien.', pMax:8, next:'Więcej powtórzeń – zwiększaj bardzo ostrożnie, to wrażliwe ścięgna.', bw:true},
+      {title:'SUPER SERIA A — Plecy + Klatka (na świeżo!)', soft:true, ex:[
+        {id:'thu_b1n', code:'A1', name:'Podciąganie szerokim nachwytem (Wide Grip Pull-ups)', target:'3 × 6–8 powt.', note:'Jedyny ruch plecowy w tym dniu, więc na start, w pełni świeży – najcięższy, najbardziej złożony ruch dnia. Szerszy chwyt niż klasyczne podciąganie – mocniej akcentuje najszersze grzbietu.', pMax:8, next:'Dodaj obciążenie (pas/plecak).', bw:true},
         {id:'thu_a2', code:'A2', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem.', bw:true}
       ]},
-      {title:'SUPER SERIA B — Plecy poziomo + Zdrowie łokcia', ex:[
-        {id:'thu_b1', code:'B1', name:'Wiosłowanie kettlem w opadzie tułowia (chwyt młotkowy)', target:'3 × 10–12 powt./rękę', note:'', pMax:12, next:'Cięższy kettlebell.'},
+      {title:'SUPER SERIA B — Palce + Zdrowie łokcia', ex:[
+        {id:'thu_a1', code:'B1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:'Drugie w kolejności, po podciąganiu i dipach – priorytetem jest jakość głównego ruchu plecowego na pełnej świeżości. Palce i tak dostają dużo pracy w środę, więc zwiększaj zakres tu bardzo ostrożnie, to wrażliwe ścięgna.', pMax:8, next:'Więcej powtórzeń – zwiększaj bardzo ostrożnie, to wrażliwe ścięgna.', bw:true},
         {id:'thu_b2', code:'B2', name:'Reverse Wrist Curls (uginanie nadgarstka w tył)', target:'3 × 15 powt.', note:'Mała hantla/kettlebell, lekki ciężar. Profilaktyka łokcia tenisisty/golfisty – częsta kontuzja przy dużej objętości pchania + wspinaczce. Zastąpiło Pompki Pike, które pokrywały się ruchowo z Decline Push-ups z soboty.', pMax:15, next:'Dodaj niewielkie obciążenie.'}
       ]},
-      {title:'SUPER SERIA C — Ortopedyczna siła jednonóż + Rozpiętki', ex:[
+      {title:'SUPER SERIA C — Ortopedyczna siła jednonóż + Rozpiętki', soft:true, ex:[
         {id:'thu_c1', code:'C1', name:'Wykroki w tył (Zakroki)', target:'3 × 10 powt./nogę', note:'Bez ciężaru, powolne tempo. Przednia noga schodzi maksymalnie do kąta 90 stopni – to zdejmuje nacisk z łąkotki.', pMax:10, next:'Dodaj lekkie obciążenie (kettle w rękach), zachowując kąt 90°.', bw:true},
         {id:'thu_c2', code:'C2', name:'Rozpiętki', target:'3 × 12 powt.', note:'', pMax:12, next:'Cięższy kettlebell lub wolniejsze tempo ekscentryczne.'}
       ]},
@@ -302,20 +310,20 @@ var DAYS = {
   sat:{
     label:'Sobota', sub:'Plecy + Ramiona + Nogi + Brzuch w wiszeniu', color:'sat',
     ss:[
-      {title:'SUPER SERIA A — Plecy + Bezpieczna dynamika bioder', ex:[
+      {title:'SUPER SERIA A — Plecy + Bezpieczna dynamika bioder', soft:true, ex:[
         {id:'sat_a1', code:'A1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6–8 powt.', note:'', pMax:8, next:'Dodaj obciążenie (pas/plecak).', bw:true},
-        {id:'sat_a2', code:'A2', name:'Kettlebell Swing', target:'3 × 15 powt.', note:'Ruch opiera się na zgięciu w biodrach – bezpieczne dla łąkotki. Rób na początku superserii, gdy jesteś w pełni skoncentrowany.', pMax:15, next:'Cięższy kettlebell.'}
+        {id:'sat_a2n', code:'A2', name:'Skoki na skrzynię (Box Jumps)', target:'3 × 5 powt.', note:'Eksplozywna moc nóg – przydatna do dynamicznych ruchów na ścianie. Lądowanie NA skrzyni jest łagodniejsze dla kolan niż klasyczny skok w dal. Brak skrzyni? Zastąp skokiem w dal (Broad Jump) z miękkim lądowaniem w przysiadzie. Rób na początku superserii, gdy jesteś w pełni skoncentrowany.', pMax:5, next:'Wyższa skrzynia lub głębszy przysiad przed odbiciem.', bw:true}
       ]},
       {title:'SUPER SERIA B — Antagonistyczna pompa ramion', ex:[
         {id:'sat_b1', code:'B1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Pełna kontrola i powolne tempo opuszczania ciężaru.', pMax:12, next:'Cięższy kettlebell.'},
         {id:'sat_b2', code:'B2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Cięższy kettlebell.'}
       ]},
-      {title:'SUPER SERIA C — Test nachwytu + Przysiad siłowy', ex:[
+      {title:'SUPER SERIA C — Test nachwytu + Przysiad siłowy', soft:true, ex:[
         {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
         {id:'sat_c2', code:'C2', name:'Półprzysiady z kettlem (Goblet do 90°)', target:'3 × 12 powt.', note:'⚠️ Zatrzymujesz ruch, gdy udo jest równolegle do ziemi – nigdy głębiej!', pMax:12, next:'Cięższy kettlebell (głębokość zostaje bez zmian – 90°).'}
       ]},
       {title:'SUPER SERIA D — Góra klatki + Brzuch siła', ex:[
-        {id:'sat_d1', code:'D1', name:'Pompki z nogami na podwyższeniu (Decline Push-ups)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Wyższe podwyższenie nóg.', bw:true},
+        {id:'sat_d1n', code:'D1', name:'Pompki w staniu na rękach (Handstand Push-ups, przy ścianie)', target:'3 × 5–8 powt.', note:'Wall HSPU – stopy oparte o ścianę dla stabilizacji. Zamiennik Decline Push-ups, mocno zaawansowana progresja pchania pionowego. Dostosuj cel do swojego realnego zakresu, jeśli 5–8 nie pasuje – zrób to przez "Edytuj ćwiczenie".', pMax:8, next:'Mniejsza pomoc ściany (dalej od niej) lub deficit HSPU na podwyższeniu.', bw:true},
         {id:'sat_d2', code:'D2', name:'Unoszenie nóg/kolan do L-Sita (w zwisie lub na poręczach)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Prostsze nogi (bliżej pełnego L-sita) lub dłuższe przytrzymanie na górze.', bw:true}
       ]}
     ],
@@ -326,6 +334,7 @@ var DAYS = {
 var DB = {};
 var PROG = {}; // trwałe nadpisania celów po zatwierdzeniu progresji: {dayId__exId: {pMax, target}}
 var TIMER = {interval: null, mode: null, remaining: 0, tabataRound: 0, tabataPhase: 'work', phaseLabel: '', audioCtx: null};
+var softMode = false;
 var curDay = 'mon';
 
 function todayStr() {
@@ -389,10 +398,18 @@ function renderDay(dayId) {
   var h = '';
 
   h += '<div class="day-title ' + day.color + '">📅 ' + day.label + ' — ' + day.sub + '</div>';
+  var calKey = getCaloriesKey(dayId);
+  var calVal = (DB[calKey] && DB[calKey].kcal) ? DB[calKey].kcal : '';
+  h += '<div class="calories-box"><label>🔥 Kalorie (zegarek)</label><input type="text" inputmode="numeric" class="calories-input" placeholder="np. 320" value="' + calVal + '" onchange="saveCalories(\'' + dayId + '\', this.value)"></div>';
+  h += '<label class="soft-toggle"><input type="checkbox" id="softModeCheckbox" ' + (softMode ? 'checked' : '') + ' onchange="toggleSoftMode(this.checked)"> ⚡ Tryb Soft — tylko 2 kluczowe superserie (~połowa czasu)</label>';
+  if (softMode) {
+    h += '<div class="soft-banner">⚡ Tryb Soft aktywny — pokazuję tylko najważniejsze ruchy złożone. Reszta planu wraca po odznaczeniu checkboxa, nic nie ginie z historii.</div>';
+  }
   h += '<div class="rest">⏸️ Odpoczynek po każdej superserii: 60–90 sekund</div>';
 
-  for (var i = 0; i < day.ss.length; i++) {
-    var ss = day.ss[i];
+  var ssToShow = softMode ? day.ss.filter(function(ss) { return ss.soft; }) : day.ss;
+  for (var i = 0; i < ssToShow.length; i++) {
+    var ss = ssToShow[i];
     h += '<div class="ss-card">';
     h += '<div class="ss-title">' + ss.title + '</div>';
 
@@ -423,21 +440,36 @@ function renderDay(dayId) {
       for (var s = 1; s <= 3; s++) {
         var k = makeKey(dayId, ex.id, s);
         var sid = safeId(k);
-        var v = DB[k] || {};
-        var rval = v.r || '';
-        var wval = (v.w !== undefined && v.w !== null) ? v.w : (ex.bw ? '0' : '');
-        var isdone = v.c ? true : false;
+        var v = DB[k];
+        var rval, wval, isHint = false;
+        var hasRealEntry = v && ((v.r !== undefined && v.r !== null && v.r !== '') || (v.w !== undefined && v.w !== null && v.w !== ''));
+        if (hasRealEntry) {
+          rval = v.r || '';
+          wval = (v.w !== undefined && v.w !== null) ? v.w : (ex.bw ? '0' : '');
+        } else {
+          var lastSet = getLastLoggedSet(dayId, ex.id, s);
+          if (lastSet) {
+            rval = lastSet.r || '';
+            wval = (lastSet.w !== undefined && lastSet.w !== null && lastSet.w !== '') ? lastSet.w : (ex.bw ? '0' : '');
+            isHint = true; // tylko podpowiedź do wyświetlenia – NIE jest jeszcze zapisana do DB
+          } else {
+            rval = '';
+            wval = ex.bw ? '0' : '';
+          }
+        }
+        var isdone = (v && v.c) ? true : false;
+        var hintClass = isHint ? ' hint' : '';
 
         h += '<div class="s-row">';
         h += '<div class="s-label">S' + s + '</div>';
         h += '<div class="stepper">';
         h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'r\',-1,\'' + sid + '\')">−</button>';
-        h += '<input class="s-input step-input" type="text" inputmode="numeric" placeholder="powt." value="' + rval + '" id="in_r_' + sid + '" onchange="sf(\'' + k + '\',\'r\',this.value)">';
+        h += '<input class="s-input step-input' + hintClass + '" type="text" inputmode="numeric" placeholder="powt." value="' + rval + '" id="in_r_' + sid + '" onchange="sf(\'' + k + '\',\'r\',this.value)">';
         h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'r\',1,\'' + sid + '\')">+</button>';
         h += '</div>';
         h += '<div class="stepper">';
         h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'w\',-2.5,\'' + sid + '\')">−</button>';
-        h += '<input class="s-input step-input" type="text" inputmode="decimal" placeholder="kg/bw" value="' + wval + '" id="in_w_' + sid + '" onchange="sf(\'' + k + '\',\'w\',this.value)">';
+        h += '<input class="s-input step-input' + hintClass + '" type="text" inputmode="decimal" placeholder="kg/bw" value="' + wval + '" id="in_w_' + sid + '" onchange="sf(\'' + k + '\',\'w\',this.value)">';
         h += '<button type="button" class="step-btn" onclick="stepVal(\'' + k + '\',\'w\',2.5,\'' + sid + '\')">+</button>';
         h += '</div>';
         h += '<div class="s-chk' + (isdone ? ' done' : '') + '" id="chk_' + sid + '" onclick="tc(\'' + k + '\',\'' + sid + '\')">' + (isdone ? '✓' : '') + '</div>';
@@ -465,24 +497,34 @@ function sf(k, field, val) {
 }
 
 function stepVal(k, field, delta, sid) {
-  if (!DB[k]) DB[k] = {};
-  var cur = DB[k][field];
-  var num = parseFloat(String(cur === undefined || cur === null || cur === '' ? '0' : cur).replace(',', '.'));
+  // Czytamy z aktualnie WYŚWIETLANEGO pola (może to być tylko podpowiedź z ostatniej sesji,
+  // jeszcze niezapisana) – dzięki temu +/- zawsze działa na tym, co faktycznie widać.
+  var inputEl = document.getElementById('in_' + field + '_' + sid);
+  var curDisplayed = inputEl ? inputEl.value : '';
+  var num = parseFloat(String(curDisplayed === '' ? '0' : curDisplayed).replace(',', '.'));
   if (isNaN(num)) num = 0;
   num = Math.round((num + delta) * 100) / 100;
   if (num < 0) num = 0;
   var val = String(num);
+  if (!DB[k]) DB[k] = {};
   DB[k][field] = val;
   save();
-  var inputEl = document.getElementById('in_' + field + '_' + sid);
-  if (inputEl) inputEl.value = val;
+  if (inputEl) { inputEl.value = val; inputEl.classList.remove('hint'); }
   updateProg(curDay);
 }
 
 function tc(k, sid) {
   if (!DB[k]) DB[k] = {};
+  // Jeśli pola pokazują tylko podpowiedź z ostatniej sesji (jeszcze niezapisaną), zatwierdzenie
+  // checkboxem "przepisuje" te wyświetlane wartości do faktycznego zapisu.
+  var rEl = document.getElementById('in_r_' + sid);
+  var wEl = document.getElementById('in_w_' + sid);
+  if ((DB[k].r === undefined || DB[k].r === null || DB[k].r === '') && rEl) DB[k].r = rEl.value;
+  if ((DB[k].w === undefined || DB[k].w === null || DB[k].w === '') && wEl) DB[k].w = wEl.value;
   DB[k].c = !DB[k].c;
   save();
+  if (rEl) rEl.classList.remove('hint');
+  if (wEl) wEl.classList.remove('hint');
   var el = document.getElementById('chk_' + sid);
   if (el) {
     if (DB[k].c) {
@@ -623,29 +665,56 @@ function renderProgressionSummary() {
 // Mapa: 'DzienLabel||Nazwa cwiczenia z pliku' -> [aktualny dayId, aktualny exId]
 // Cwiczenia usunięte z planu (Kettlebell Halo, Pompki Pike) celowo pominięte – zostaną zignorowane przy imporcie.
 // Kettlebell Pullover było logowane w czwartek, ale w aktualnym planie żyje w poniedziałek (mon_c2) – mapujemy pod nowe miejsce.
+// Kompletna tabela mapowania importu CSV. Zawiera zarówno AKTUALNE nazwy ćwiczeń z planu,
+// jak i ich STARSZE warianty nazw sprzed kolejnych edycji planu (np. "Dipy na poręczach" →
+// "Dipy na poręczach (cc)"), żeby stare eksporty CSV z różnych okresów importowały się poprawnie.
+// Usunięte ćwiczenia (Kettlebell Pullover, Kettlebell Bent-Over Reverse Fly, Wiosłowanie kettlem,
+// Kettlebell Swing) mapują się na swoje STARE, wycofane ID – nie pojawią się w bieżącym treningu
+// ani w progresji/wykresach, ale historia pozostaje poprawnie podpisana.
+// Kettlebell Halo i Pompki Pike celowo NIE mają mapowania – zostały usunięte bez następcy.
 var IMPORT_ALIASES = {
-  'Poniedziałek||Pompki klasyczne (głębokie, pełny wyprost)': ['mon','mon_a2'],
+  // PONIEDZIAŁEK
   'Poniedziałek||Pompki diamentowe': ['mon','mon_a1'],
+  'Poniedziałek||Pompki klasyczne (głębokie, pełny wyprost)': ['mon','mon_a2'],
   'Poniedziałek||Dipy na poręczach': ['mon','mon_b1'],
+  'Poniedziałek||Dipy na poręczach (cc)': ['mon','mon_b1'],
   'Poniedziałek||Krzesełko na poręczach (przyciąganie kolan)': ['mon','mon_b2'],
+  'Poniedziałek||Krzesełko na poręczach (dynamiczne przyciąganie kolan)': ['mon','mon_b2'],
   'Poniedziałek||Pompki jednorącz': ['mon','mon_c1'],
+  'Poniedziałek||Pompki jednorącz (lub regresja na podwyższeniu)': ['mon','mon_c1'],
+  'Poniedziałek||Ab Roller (kółko na brzuch)': ['mon','mon_d2'],
+  'Poniedziałek||Kettlebell Pullover': ['mon','mon_c2'],
+  'Czwartek||Kettlebell Pullover': ['mon','mon_c2'],
+  'Poniedziałek||Kettlebell Bent-Over Reverse Fly (rozpiętki tylnego barku z kettlami)': ['mon','mon_d1'],
+  // ŚRODA
   'Środa||Muscle-Up (Wejście siłowe)': ['wed','wed_a1'],
   'Środa||Rumuński Martwy Ciąg z kettlem': ['wed','wed_a2'],
   'Środa||Podciąganie KLASYCZNE (Nachwyt)': ['wed','wed_b1'],
-  'Środa||Wspinanie na linie': ['wed','wed_c2'],
+  'Środa||Wycieraczki w zwisie na drążku (Hanging Windshields)': ['wed','wed_b2'],
   'Środa||Podciąganie MŁOTKOWE (Neutralne)': ['wed','wed_c1'],
+  'Środa||Wspinanie na linie': ['wed','wed_c2'],
+  'Środa||Pompki Archera (Archer Push-ups)': ['wed','wed_d1'],
   'Środa||Zwis na ręcznikach (chwyt neutralny)': ['wed','wed_d2'],
+  // CZWARTEK
+  'Czwartek||Pompki na opuszkach palców (Fingertip)': ['thu','thu_a1'],
   'Czwartek||Bar Dipy (Dipy na poręczach)': ['thu','thu_a2'],
   'Czwartek||Wiosłowanie kettlem w opadzie (chwyt młotkowy)': ['thu','thu_b1'],
+  'Czwartek||Wiosłowanie kettlem w opadzie tułowia (chwyt młotkowy)': ['thu','thu_b1'],
+  'Czwartek||Reverse Wrist Curls (uginanie nadgarstka w tył)': ['thu','thu_b2'],
   'Czwartek||Wykroki w tył': ['thu','thu_c1'],
-  'Czwartek||Pompki na opuszkach palców (Fingertip)': ['thu','thu_a1'],
-  'Czwartek||Kettlebell Pullover': ['mon','mon_c2'],
-  'Sobota||Podciąganie KLASYCZNE (Nachwyt)': ['sat','sat_c1'],
-  'Sobota||Półprzysiady z kettlem (Goblet do 90°)': ['sat','sat_c2'],
+  'Czwartek||Wykroki w tył (Zakroki)': ['thu','thu_c1'],
+  'Czwartek||Rozpiętki': ['thu','thu_c2'],
+  'Czwartek||Pompki dynamiczne / z klaskaniem (Plyo Push-ups)': ['thu','thu_d1'],
+  'Czwartek||Scyzoryki naprzemienne na ziemi (Bicycle Crunches)': ['thu','thu_d2'],
+  // SOBOTA
+  'Sobota||Podciąganie MŁOTKOWE (Neutralne)': ['sat','sat_a1'],
+  'Sobota||Kettlebell Swing': ['sat','sat_a2'],
   'Sobota||Biceps młotkowo z kettlem': ['sat','sat_b1'],
   'Sobota||Triceps za głową z kettlem': ['sat','sat_b2'],
-  'Sobota||Podciąganie MŁOTKOWE (Neutralne)': ['sat','sat_a1'],
-  'Sobota||Kettlebell Swing': ['sat','sat_a2']
+  'Sobota||Podciąganie KLASYCZNE (Nachwyt)': ['sat','sat_c1'],
+  'Sobota||Półprzysiady z kettlem (Goblet do 90°)': ['sat','sat_c2'],
+  'Sobota||Pompki z nogami na podwyższeniu (Decline Push-ups)': ['sat','sat_d1'],
+  'Sobota||Unoszenie nóg/kolan do L-Sita (w zwisie lub na poręczach)': ['sat','sat_d2']
 };
 
 function parseCSV(text) {
@@ -688,7 +757,7 @@ function handleImportFile(input) {
         weight: header.indexOf('Ciezar (kg)'),
         done: header.indexOf('Zaliczona')
       };
-      var imported = 0, skipped = 0, skippedNames = {};
+      var imported = 0, skipped = 0, skippedNames = {}, skippedUnconfirmed = 0;
       for (var r = 1; r < rows.length; r++) {
         var row = rows[r];
         if (!row || row.length < 5) continue;
@@ -700,6 +769,7 @@ function handleImportFile(input) {
         var weight = row[idx.weight];
         var done = row[idx.done];
         if (!date || !exName) continue;
+        if (done !== 'Tak') { skippedUnconfirmed++; continue; } // niezaliczone (np. "widmowe" wpisy) nie są prawdziwym treningiem
         var mapKey = dayLabel + '||' + exName;
         var map = IMPORT_ALIASES[mapKey];
         if (!map) {
@@ -708,18 +778,21 @@ function handleImportFile(input) {
           continue;
         }
         var dbKey = date + '__' + map[0] + '__' + map[1] + '__s' + seria;
-        DB[dbKey] = { r: reps || '', w: weight || '', c: (done === 'Tak') };
+        DB[dbKey] = { r: reps || '', w: weight || '', c: true };
         imported++;
       }
       save();
       renderDay(curDay);
       var skippedList = Object.keys(skippedNames);
-      var msg = '✅ Zaimportowano ' + imported + ' wpisów.';
+      var msg = '✅ Zaimportowano ' + imported + ' zaliczonych wpisów.';
+      if (skippedUnconfirmed > 0) {
+        msg += ' Pominięto ' + skippedUnconfirmed + ' niezaliczonych wierszy (nie są prawdziwym treningiem).';
+      }
       if (skippedList.length) {
         msg += ' Pominięto ' + skipped + ' wpisów spoza aktualnego planu (' + skippedList.join(', ') + ').';
       }
       showToast('✅ Import zakończony!');
-      if (skippedList.length) { showInfoModal(msg); } else { console.log(msg); }
+      if (skippedList.length || skippedUnconfirmed > 0) { showInfoModal(msg); } else { console.log(msg); }
     } catch (err) {
       console.error(err);
       showToast('❌ Błąd importu pliku');
@@ -745,27 +818,43 @@ function getLastLoggedSet(dayId, exId, setNum) {
   return best ? best.v : null;
 }
 
-function prefillFromLastSession(dayId) {
-  var day = DAYS[dayId];
-  if (!day) return;
-  var changed = false;
-  day.ss.forEach(function(ss) {
-    ss.ex.forEach(function(rawEx) {
-      var ex = getEffectiveEx(dayId, rawEx);
-      for (var s = 1; s <= NUM_SETS; s++) {
-        var todayKey = makeKey(dayId, ex.id, s);
-        var existing = DB[todayKey];
-        if (existing && (existing.r || existing.w)) continue; // już coś dziś wpisane – nie nadpisujemy
-        var last = getLastLoggedSet(dayId, ex.id, s);
-        if (!last) continue;
-        var wVal = last.w;
-        if (ex.bw && (wVal === undefined || wVal === null || wVal === '')) wVal = '0';
-        DB[todayKey] = {r: last.r || '', w: wVal || (ex.bw ? '0' : ''), c: false};
-        changed = true;
-      }
-    });
-  });
-  if (changed) save();
+// UWAGA: poprzednia wersja miała tu funkcję prefillFromLastSession(), która od razu ZAPISYWAŁA
+// podpowiedzi z ostatniej sesji do pamięci przy samym wejściu w dzień – to powodowało powstawanie
+// "widmowych" niezaliczonych wpisów przy zwykłym przeglądaniu appki. Naprawione: podpowiedź z ostatniej
+// sesji jest teraz liczona tylko do WYŚWIETLENIA w renderDay() i zapisuje się dopiero, gdy faktycznie
+// zaznaczysz checkbox (tc()) albo ręcznie zmienisz wartość (sf()/stepVal()).
+
+// ---- KALORIE (z zegarka) ----
+// Klucz ma tylko 3 segmenty (data__dayId__calories), więc jest automatycznie pomijany
+// przez wszystkie funkcje iterujące po wpisach ćwiczeń (te wymagają 4 segmentów: data__dayId__exId__sN).
+function getCaloriesKey(dayId) {
+  return todayStr() + '__' + dayId + '__calories';
+}
+
+function saveCalories(dayId, val) {
+  var key = getCaloriesKey(dayId);
+  var num = val.trim();
+  if (num === '') { delete DB[key]; }
+  else { DB[key] = {kcal: num}; }
+  save();
+  showToast('🔥 Kalorie zapisane');
+}
+
+function getCaloriesForDate(dayId, date) {
+  var key = date + '__' + dayId + '__calories';
+  return DB[key] ? DB[key].kcal : null;
+}
+
+// ---- TRYB SOFT (skrócony trening) ----
+function loadSoftMode() {
+  softMode = localStorage.getItem('trening_v4_softmode') === 'true';
+}
+
+function toggleSoftMode(checked) {
+  softMode = checked;
+  localStorage.setItem('trening_v4_softmode', softMode ? 'true' : 'false');
+  renderDay(curDay);
+  showToast(softMode ? '⚡ Tryb Soft włączony' : '💪 Pełny trening przywrócony');
 }
 
 function switchDay(dayId, btn) {
@@ -773,7 +862,6 @@ function switchDay(dayId, btn) {
   var btns = document.querySelectorAll('.day-btn');
   for (var i = 0; i < btns.length; i++) btns[i].classList.remove('active');
   btn.classList.add('active');
-  prefillFromLastSession(dayId);
   renderDay(dayId);
 }
 
@@ -821,6 +909,8 @@ function renderHistory() {
       var label = dayInfo ? dayInfo.label : dayId;
       h += '<div class="hist-card">';
       h += '<div class="hist-head"><span class="hd">📅 ' + formatDate(date) + '</span><span class="hl">' + label + '</span></div>';
+      var kcal = getCaloriesForDate(dayId, date);
+      if (kcal) h += '<div class="hist-ex">🔥 <strong>' + kcal + ' kcal</strong> (z zegarka)</div>';
       Object.keys(grouped[date][dayId]).forEach(function(exId) {
         var exName = findExName(dayId, exId);
         var series = grouped[date][dayId][exId];
@@ -990,12 +1080,20 @@ function renderWeeklyVolume() {
   var weeks = {};
   Object.keys(DB).forEach(function(k) {
     var parts = k.split('__');
+    if (parts.length === 3 && parts[2] === 'calories') {
+      var date0 = parts[0];
+      var wk0 = getWeekKey(date0);
+      if (!weeks[wk0]) weeks[wk0] = {sets: 0, reps: 0, tonnage: 0, kcal: 0, dates: {}, sampleDate: date0};
+      var kcalNum = parseFloat(String(DB[k].kcal || '').replace(',', '.'));
+      if (!isNaN(kcalNum)) weeks[wk0].kcal += kcalNum;
+      return;
+    }
     if (parts.length < 4) return;
     var v = DB[k];
     if (!v || !v.c) return; // liczymy tylko zaliczone serie
     var date = parts[0];
     var wk = getWeekKey(date);
-    if (!weeks[wk]) weeks[wk] = {sets: 0, reps: 0, tonnage: 0, dates: {}, sampleDate: date};
+    if (!weeks[wk]) weeks[wk] = {sets: 0, reps: 0, tonnage: 0, kcal: 0, dates: {}, sampleDate: date};
     weeks[wk].sets++;
     weeks[wk].dates[date] = true;
     var rn = parseFloat(String(v.r === undefined || v.r === null ? '' : v.r).replace(',', '.'));
@@ -1018,6 +1116,7 @@ function renderWeeklyVolume() {
     h += '<div class="prog-summary-item">✅ ' + w.sets + ' zaliczonych serii</div>';
     h += '<div class="prog-summary-item">🔁 ' + Math.round(w.reps) + ' powtórzeń łącznie</div>';
     if (w.tonnage > 0) h += '<div class="prog-summary-item">🏋️ ' + Math.round(w.tonnage) + ' kg tonażu (Σ powt.×kg)</div>';
+    if (w.kcal > 0) h += '<div class="prog-summary-item">🔥 ' + Math.round(w.kcal) + ' kcal łącznie</div>';
     h += '</div>';
   });
   container.innerHTML = h;
@@ -1513,9 +1612,9 @@ function checkBackupReminder() {
 function init() {
   load();
   loadProg();
+  loadSoftMode();
   var now = new Date();
   document.getElementById('hDate').textContent = now.toLocaleDateString('pl-PL', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
-  prefillFromLastSession('mon');
   renderDay('mon');
   checkBackupReminder();
 }
