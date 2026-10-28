@@ -244,20 +244,20 @@ var DAYS = {
   mon:{
     label:'Poniedziałek', sub:'Pchanie + Siła Jednorącz + Ab Roller', color:'mon',
     ss:[
-      {title:'SUPER SERIA A — Moc jednorącz (na świeżo!)', soft:true, ex:[
+      {title:'SUPER SERIA A — Antagonista: Jednorącz + Jednorącz-wis (na świeżo!)', soft:true, ex:[
         {id:'mon_c1', code:'A1', name:'Pompki jednorącz (lub regresja na podwyższeniu)', target:'3 × 3-5 powt./stronę', note:'Przesunięte na początek treningu, żeby robić je na świeżych rękach – to najbardziej wymagające technicznie ćwiczenie w tym dniu. Genialna siła pod skały. Jeśli na ziemi za ciężko, zrób z dłońmi na podwyższeniu, np. na ławce – im wyżej ręka, tym łatwiej.', pMax:5, next:'Niższe podwyższenie – zbliżaj się do pełnej wersji z ziemi.', bw:true},
-        {id:'mon_a1', code:'A2', name:'Pompki diamentowe', target:'3 × 10 powt.', note:'', pMax:10, next:'Deficit diamond push-ups – dłonie na podwyższeniu ok. 5 cm.', bw:true}
+        {id:'mon_c2n', code:'A2', name:'Zwis na jednej ręce (One-Arm Dead Hang)', target:'3 × 5–10 sek./stronę', note:'Krok 1 drabinki pod podciąganie na jednej ręce (OAPU) – przeniesiony tu z końca dnia, żeby robić go w pełni świeży, tak jak inne ćwiczenia techniczne w tygodniu (Archer w sobotę, Muscle-up w środę). Prawdziwy antagonista dla pompek jednorącz. Dostosuj cel przez "Edytuj ćwiczenie", jeśli realny czas mocno odbiega od 5–10 sek. Kolejne kroki: Archer Pull-ups → Typewriter Pull-ups → OAP z asekuracją ręcznikiem → negatywy jednorącz → pełne OAPU.', pMax:10, next:'Dłuższy wis na jednej ręce lub przejście do Archer Pull-ups.', bw:true}
       ]},
-      {title:'SUPER SERIA B — Klatka / Poręcze', soft:true, ex:[
+      {title:'SUPER SERIA B — Pchanie + Brzuch', soft:true, ex:[
         {id:'mon_a2', code:'B1', name:'Pompki klasyczne (głębokie, pełny wyprost)', target:'3 × 15 powt.', note:'', pMax:15, next:'Dodaj tempo 3s w dół albo obciążenie (plecak/kamizelka).', bw:true},
-        {id:'mon_b1', code:'B2', name:'Dipy na poręczach (cc)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem (pas/plecak).', bw:true}
+        {id:'mon_d2', code:'B2', name:'Ab Roller (kółko na brzuch)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Dłuższy rollout (bliżej pełnego wyprostu) lub rollout stojąc.', bw:true}
       ]},
-      {title:'SUPER SERIA C — Core', ex:[
+      {title:'SUPER SERIA C — Core + Dipy', ex:[
         {id:'mon_b2', code:'C1', name:'Krzesełko na poręczach (dynamiczne przyciąganie kolan)', target:'3 × 12–15 powt.', note:'', pMax:15, next:'Przyciąganie kolan wyżej (do klatki) lub wolniejsze tempo.', bw:true},
-        {id:'mon_d2', code:'C2', name:'Ab Roller (kółko na brzuch)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Dłuższy rollout (bliżej pełnego wyprostu) lub rollout stojąc.', bw:true}
+        {id:'mon_b1', code:'C2', name:'Dipy na poręczach (cc)', target:'3 × 12–15 powt.', note:'🔵 OBJĘTOŚĆ – ten wariant ma na stałe rolę objętościową (czwartek robi dipy pod siłę). Bez obciążenia, więcej powtórzeń.', pMax:15, next:'Więcej powtórzeń lub wolniejsze tempo.', bw:true}
       ]},
-      {title:'SUPER SERIA D — Antagonista: Wis + Pchanie', ex:[
-        {id:'mon_c2n', code:'D1', name:'Zwis na drążku nachwytem (Dead Hang)', target:'3 × 20–30 sek.', note:'Pasywny wis na prostych rękach – antagonista dla reszty dnia złożonego z samego pchania, i dekompresja barku po seriach dipów/pompek. Zastępuje poprzedni Dip Support Hold (też pchający, czyli duplikował resztę dnia) – teraz D to prawdziwa superseria antagonistyczna: wis (ciągnięcie) + Scapular Push-ups (pchanie/stabilizacja). Dodatkowo rekompensuje chwytową objętość, której zimą brakuje z bulderów.', pMax:30, next:'Dłuższy wis lub dodaj lekkie obciążenie (pas z talerzem).', bw:true},
+      {title:'SUPER SERIA D — Dopalenie klatki + Zdrowie barku', ex:[
+        {id:'mon_a1', code:'D1', name:'Pompki diamentowe', target:'3 × 10 powt.', note:'Przeniesione tu z A – skoro to "tylko" wariant pompek (nie wymaga balansu/techniki na poziomie zwisu jednorącz), lepiej zniesie lekkie zmęczenie z wcześniejszych ćwiczeń.', pMax:10, next:'Deficit diamond push-ups – dłonie na podwyższeniu ok. 5 cm.', bw:true},
         {id:'mon_d1n', code:'D2', name:'Pompki z wysuwaniem łopatek (Scapular Push-ups)', target:'3 × 12–15 powt.', note:'Pozycja deski na wyprostowanych rękach, bez uginania łokci wypychasz i cofasz łopatki. Czysta kalistenika, bez sprzętu – dba o zdrowie barku (serratus anterior). Zamiennik usuniętego Kettlebell Bent-Over Reverse Fly.', pMax:15, next:'Wolniejsze tempo lub dodaj przytrzymanie na górze ruchu.', bw:true}
       ]}
     ],
@@ -271,12 +271,12 @@ var DAYS = {
         {id:'wed_a2', code:'A2', name:'Rumuński Martwy Ciąg z kettlem', target:'3 × 12 powt.', note:'Kolana lekko odblokowane – bezpieczne dla łąkotki.', pMax:12, next:'Cięższy kettlebell.'}
       ]},
       {title:'SUPER SERIA B — Mocny chwyt pod rotację brzucha', soft:true, ex:[
-        {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'Ścisła kontrola ruchu, bez szarpania na dole.', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+        {id:'wed_b1', code:'B1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 3–5 powt. + obciążenie', note:'🔴 SIŁA – ten wariant ma na stałe rolę siłową (sobota robi klasyczne pod objętość). Ścisła kontrola ruchu, bez szarpania na dole. Dodaj obciążenie (pas/plecak).', pMax:5, next:'Cięższe obciążenie.', bw:true},
         {id:'wed_b2', code:'B2', name:'Wycieraczki w zwisie na drążku (Hanging Windshields)', target:'3 × 8–10 powt.', note:'Rób je, póki masz siłę utrzymać się na drążku.', pMax:10, next:'Pełniejszy zakres ruchu (bliżej drążka) lub więcej powtórzeń.', bw:true}
       ]},
       {title:'SUPER SERIA C — Chwyt neutralny + Push jednorącz', ex:[
-        {id:'wed_c1', code:'C1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6 powt.', note:'', pMax:6, next:'Dodaj obciążenie (pas/plecak).', bw:true},
-        {id:'wed_d1', code:'C2', name:'Pompki Archera (Archer Push-ups)', target:'3 × 6–8 powt./stronę', note:'Push zamiast kolejnego ciągnięcia – daje chwytowi chwilę oddechu przed finiszem z liną.', pMax:8, next:'Głębszy archer, bliżej pełnej wersji jednorącz.', bw:true}
+        {id:'wed_d1', code:'C1', name:'Pompki Archera (Archer Push-ups)', target:'3 × 6–8 powt./stronę', note:'Push na początku superserii – po Muscle-up, ciężkim podciąganiu klasycznym i wycieraczkach Twój chwyt/plecy są już solidnie zmęczone. Archer jako inna grupa mięśniowa daje chwilę oddechu przed młotkowym na objętość.', pMax:8, next:'Głębszy archer, bliżej pełnej wersji jednorącz.', bw:true},
+        {id:'wed_c1', code:'C2', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 8–10 powt.', note:'🔵 OBJĘTOŚĆ – ten wariant ma na stałe rolę objętościową (sobota robi młotkowe pod siłę). Bez obciążenia, więcej powtórzeń.', pMax:10, next:'Więcej powtórzeń lub wolniejsze tempo.', bw:true}
       ]},
       {title:'SUPER SERIA D — Grip finisher (Lina + Zwis)', ex:[
         {id:'wed_c2', code:'D1', name:'Wspinanie na linie', target:'3 × 1 wejście', note:'Pomagaj mocno nogami – technika oplatania liny wokół buta. Celowo na koniec, razem ze zwisem – to główny finiszer chwytu w tym dniu.', pSkip:true, next:'Mniej pomocy nóg lub szybszy czas wejścia.', bw:true},
@@ -290,11 +290,11 @@ var DAYS = {
     ss:[
       {title:'SUPER SERIA A — Plecy + Klatka (na świeżo!)', soft:true, ex:[
         {id:'thu_b1n', code:'A1', name:'Podciąganie szerokim nachwytem (Wide Grip Pull-ups)', target:'3 × 6–8 powt.', note:'Jedyny ruch plecowy w tym dniu, więc na start, w pełni świeży – najcięższy, najbardziej złożony ruch dnia. Szerszy chwyt niż klasyczne podciąganie – mocniej akcentuje najszersze grzbietu.', pMax:8, next:'Dodaj obciążenie (pas/plecak).', bw:true},
-        {id:'thu_a2', code:'A2', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Dipy z dodatkowym obciążeniem.', bw:true}
+        {id:'thu_a2', code:'A2', name:'Bar Dipy (Dipy na poręczach)', target:'3 × 5–8 powt. (wolne tempo)', note:'🔴 SIŁA – ten wariant ma na stałe rolę siłową (poniedziałek robi dipy pod objętość). Bez pasa z obciążeniem zwolnij tempo (3 sek. w dół) dla większej intensywności.', pMax:8, next:'Dodaj obciążenie (pas/plecak), jeśli masz.', bw:true}
       ]},
       {title:'SUPER SERIA B — Palce + Zdrowie łokcia', ex:[
         {id:'thu_a1', code:'B1', name:'Pompki na opuszkach palców (Fingertip)', target:'3 × 5–8 powt.', note:'Drugie w kolejności, po podciąganiu i dipach – priorytetem jest jakość głównego ruchu plecowego na pełnej świeżości. Palce i tak dostają dużo pracy w środę, więc zwiększaj zakres tu bardzo ostrożnie, to wrażliwe ścięgna.', pMax:8, next:'Więcej powtórzeń – zwiększaj bardzo ostrożnie, to wrażliwe ścięgna.', bw:true},
-        {id:'thu_b2', code:'B2', name:'Reverse Wrist Curls (uginanie nadgarstka w tył)', target:'3 × 15 powt.', note:'Mała hantla/kettlebell, lekki ciężar. Profilaktyka łokcia tenisisty/golfisty – częsta kontuzja przy dużej objętości pchania + wspinaczce. Zastąpiło Pompki Pike, które pokrywały się ruchowo z Decline Push-ups z soboty.', pMax:15, next:'Dodaj niewielkie obciążenie.'}
+        {id:'thu_b2n', code:'B2', name:'Uginanie nadgarstka w tył o własnej wadze (bodyweight wrist extension)', target:'3 × 15–20 powt.', note:'Poprawka: Pompki na pięściach to też pchanie – dublowałoby się z Fingertip w tej samej superserii. To prawdziwy kalisteniczny zamiennik Reverse Wrist Curls: przedramię płasko na stole/ławce, dłoń zwisa za krawędzią, unosisz grzbiet dłoni w górę (wyprost nadgarstka) wyłącznie przeciw własnej wadze, bez kettla. Ten sam cel profilaktyczny – zdrowie łokcia.', pMax:20, next:'Wolniejsze tempo lub dłuższe przytrzymanie na górze ruchu.', bw:true}
       ]},
       {title:'SUPER SERIA C — Ortopedyczna siła jednonóż + Rozpiętki', soft:true, ex:[
         {id:'thu_c1', code:'C1', name:'Wykroki w tył (Zakroki)', target:'3 × 10 powt./nogę', note:'Bez ciężaru, powolne tempo. Przednia noga schodzi maksymalnie do kąta 90 stopni – to zdejmuje nacisk z łąkotki.', pMax:10, next:'Dodaj lekkie obciążenie (kettle w rękach), zachowując kąt 90°.', bw:true},
@@ -310,21 +310,21 @@ var DAYS = {
   sat:{
     label:'Sobota', sub:'Plecy + Ramiona + Nogi + Brzuch w wiszeniu', color:'sat',
     ss:[
-      {title:'SUPER SERIA A — Plecy + Bezpieczna dynamika bioder', soft:true, ex:[
-        {id:'sat_a1', code:'A1', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 6–8 powt.', note:'', pMax:8, next:'Dodaj obciążenie (pas/plecak).', bw:true},
-        {id:'sat_a2n', code:'A2', name:'Skoki na skrzynię (Box Jumps)', target:'3 × 5 powt.', note:'Eksplozywna moc nóg – przydatna do dynamicznych ruchów na ścianie. Lądowanie NA skrzyni jest łagodniejsze dla kolan niż klasyczny skok w dal. Brak skrzyni? Zastąp skokiem w dal (Broad Jump) z miękkim lądowaniem w przysiadzie. Rób na początku superserii, gdy jesteś w pełni skoncentrowany.', pMax:5, next:'Wyższa skrzynia lub głębszy przysiad przed odbiciem.', bw:true}
+      {title:'SUPER SERIA A — OAPU progresja + Moc nóg', soft:true, ex:[
+        {id:'sat_archer', code:'A1', name:'Podciąganie Archera (Archer Pull-ups)', target:'3 × 3–5 powt./stronę', note:'Krok 2 drabinki pod podciąganie na jednej ręce (OAPU), po Zwisie na jednej ręce z poniedziałku. Podciągasz się głównie jedną ręką, druga zostaje wyprostowana z boku, lekko dotykając drążka. Na początku treningu, w pełni świeży – analogicznie do Muscle-up ze środy. Dostosuj cel przez "Edytuj ćwiczenie", jeśli 3–5 nie pasuje.', pMax:5, next:'Mniej pomocy drugiej ręki lub przejście do Typewriter Pull-ups.', bw:true},
+        {id:'sat_pistol', code:'A2', name:'Przysiad pistoletowy (Pistol Squat)', target:'3 × 5 powt./nogę', note:'Zamiennik Box Jumps – zaawansowana siła jednonóż zamiast eksplozji. Jeśli pełna wersja jeszcze niedostępna, rób z asekuracją ręki (trzymaj się czegoś) albo z podwyższeniem pod tylną nogę. Celowo nieciągnący partner dla Archera – jak RDL dla Muscle-up w środę.', pMax:5, next:'Mniej asekuracji ręką lub głębszy zakres.', bw:true}
       ]},
-      {title:'SUPER SERIA B — Antagonistyczna pompa ramion', ex:[
-        {id:'sat_b1', code:'B1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Pełna kontrola i powolne tempo opuszczania ciężaru.', pMax:12, next:'Cięższy kettlebell.'},
-        {id:'sat_b2', code:'B2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Cięższy kettlebell.'}
+      {title:'SUPER SERIA B — Antagonista: Pchanie (skill) + Ciągnięcie (siła)', ex:[
+        {id:'sat_d1n', code:'B1', name:'Pompki w staniu na rękach (Handstand Push-ups, przy ścianie)', target:'3 × 5–8 powt.', note:'Przeniesione z końca dnia na wcześniejszą pozycję – to najbardziej ryzykowne technicznie ćwiczenie w tygodniu (balans, nadgarstek, kark), więc zasługuje na świeże barki, nie zmęczone serią podciągania i przysiadów. Wall HSPU – stopy oparte o ścianę dla stabilizacji. Dostosuj cel do swojego realnego zakresu, jeśli 5–8 nie pasuje – zrób to przez "Edytuj ćwiczenie".', pMax:8, next:'Mniejsza pomoc ściany (dalej od niej) lub deficit HSPU na podwyższeniu.', bw:true},
+        {id:'sat_a1', code:'B2', name:'Podciąganie MŁOTKOWE (Neutralne)', target:'3 × 4–6 powt. + obciążenie', note:'🔴 SIŁA – ten wariant ma na stałe rolę siłową (środa robi młotkowe pod objętość). Prawdziwy antagonista z Handstand Push-ups.', pMax:6, next:'Cięższe obciążenie.', bw:true}
       ]},
-      {title:'SUPER SERIA C — Test nachwytu + Przysiad siłowy', soft:true, ex:[
-        {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 5 powt.', note:'', pMax:5, next:'Dodaj obciążenie (pas/plecak).', bw:true},
+      {title:'SUPER SERIA C — Podciąganie objętość + Przysiad', soft:true, ex:[
+        {id:'sat_c1', code:'C1', name:'Podciąganie KLASYCZNE (Nachwyt)', target:'3 × 8–10 powt.', note:'🔵 OBJĘTOŚĆ – ten wariant ma na stałe rolę objętościową (środa robi klasyczne pod siłę). Bez obciążenia, więcej powtórzeń.', pMax:10, next:'Więcej powtórzeń lub wolniejsze tempo.', bw:true},
         {id:'sat_c2', code:'C2', name:'Półprzysiady z kettlem (Goblet do 90°)', target:'3 × 12 powt.', note:'⚠️ Zatrzymujesz ruch, gdy udo jest równolegle do ziemi – nigdy głębiej!', pMax:12, next:'Cięższy kettlebell (głębokość zostaje bez zmian – 90°).'}
       ]},
-      {title:'SUPER SERIA D — Góra klatki + Brzuch siła', ex:[
-        {id:'sat_d1n', code:'D1', name:'Pompki w staniu na rękach (Handstand Push-ups, przy ścianie)', target:'3 × 5–8 powt.', note:'Wall HSPU – stopy oparte o ścianę dla stabilizacji. Zamiennik Decline Push-ups, mocno zaawansowana progresja pchania pionowego. Dostosuj cel do swojego realnego zakresu, jeśli 5–8 nie pasuje – zrób to przez "Edytuj ćwiczenie".', pMax:8, next:'Mniejsza pomoc ściany (dalej od niej) lub deficit HSPU na podwyższeniu.', bw:true},
-        {id:'sat_d2', code:'D2', name:'Unoszenie nóg/kolan do L-Sita (w zwisie lub na poręczach)', target:'3 × 8–10 powt.', note:'', pMax:10, next:'Prostsze nogi (bliżej pełnego L-sita) lub dłuższe przytrzymanie na górze.', bw:true}
+      {title:'SUPER SERIA D — Antagonistyczna pompa ramion', ex:[
+        {id:'sat_b1', code:'D1', name:'Biceps młotkowo z kettlem', target:'3 × 10–12 powt./rękę', note:'Przeniesione na koniec – klasyczna izolacja, nie wymaga świeżości jak ruchy złożone wcześniej w dniu.', pMax:12, next:'Cięższy kettlebell.'},
+        {id:'sat_b2', code:'D2', name:'Triceps za głową z kettlem', target:'3 × 10–12 powt.', note:'', pMax:12, next:'Cięższy kettlebell.'}
       ]}
     ],
     tabata:'Glute Bridge Hold – mostek biodrowy statycznie, biodra maksymalnie wysoko, mocne spięcie pośladków.'
@@ -362,7 +362,10 @@ function saveProg() {
   localStorage.setItem('trening_v4_prog', JSON.stringify(PROG));
 }
 
-// Zwraca ćwiczenie z ewentualnie nadpisanymi polami (target/pMax/name/note/bw...) po edycji lub zatwierdzonej progresji.
+// Zwraca ćwiczenie z ewentualnie nadpisanymi polami (target/pMax/name/note/bw...) po ręcznej edycji/progresji.
+// (Podział siła/objętość między środą a sobotą dla podciągania i poniedziałkiem/czwartkiem dla dipów
+// jest teraz zaszyty na stałe bezpośrednio w definicjach ćwiczeń w DAYS – nie trzeba już wyliczać
+// numeru tygodnia, bo każdy dzień ma zawsze tę samą, stałą rolę.)
 function getEffectiveEx(dayId, ex) {
   var override = PROG[dayId + '__' + ex.id];
   if (!override) return ex;
